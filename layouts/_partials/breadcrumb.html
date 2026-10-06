@@ -1,0 +1,7 @@
+{{/* Home / Section / Post. The section comes from the folder the post sits in. */}}
+{{ with .Ancestors.Reverse }}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  {{ range . }}<a href="{{ .RelPermalink }}">{{ if .IsHome }}Home{{ else }}{{ .Title }}{{ end }}</a><span aria-hidden="true"> / </span>{{ end }}
+  <span aria-current="page">{{ $.Title }}</span>
+</nav>
+{{ end }}

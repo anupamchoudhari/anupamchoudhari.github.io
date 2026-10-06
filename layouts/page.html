@@ -1,0 +1,19 @@
+{{ define "main" }}
+<article>
+  {{ partial "breadcrumb.html" . }}
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.subtitle }}<p class="subtitle">{{ . }}</p>{{ end }}
+    {{ if and .IsPage (ne .Section "") }}
+    <p class="meta">
+      {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>{{ end }}
+      {{ with .Params.status }} · <span class="status status-{{ . }}">{{ . | humanize }}</span>{{ end }}
+    </p>
+    {{ end }}
+  </header>
+  {{ .Content }}
+  {{ with .GetTerms "themes" }}
+  <p class="themes">Themes: {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}">{{ $t.LinkTitle }}</a>{{ end }}</p>
+  {{ end }}
+</article>
+{{ end }}

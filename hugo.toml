@@ -1,0 +1,60 @@
+# Site config. Content lives in content/<section>/<slug>.md
+baseURL = "https://anupamchoudhari.com/"
+locale = "en"
+title = "Anupam Choudhari"
+enableRobotsTXT = true
+disableKinds = []
+
+[params]
+  description = "I build AI products, and I keep notes on how the decisions really get made."
+  tagline = "Product builder. Framework hoarder. Personally devoted parent (my daughter disputes this)."
+  author = "Anupam Choudhari"
+
+# Every post lives at a flat address: anupamchoudhari.com/<slug>
+# Moving a post to another section folder never changes its link.
+[permalinks.page]
+  workbench = "/:slug/"
+  toolkit = "/:slug/"
+  three-takeaways = "/:slug/"
+  mildly-annoying = "/:slug/"
+  parents-corner = "/:slug/"
+  currently-brewing = "/:slug/"
+
+[taxonomies]
+  theme = "themes"
+
+[menus]
+  [[menus.main]]
+    name = "The Workbench"
+    pageRef = "/workbench"
+    weight = 10
+  [[menus.main]]
+    name = "The Toolkit"
+    pageRef = "/toolkit"
+    weight = 20
+  [[menus.main]]
+    name = "Three Takeaways"
+    pageRef = "/three-takeaways"
+    weight = 30
+  [[menus.main]]
+    name = "Mildly Annoying"
+    pageRef = "/mildly-annoying"
+    weight = 40
+  [[menus.main]]
+    name = "Parents Corner"
+    pageRef = "/parents-corner"
+    weight = 50
+  [[menus.main]]
+    name = "Currently Brewing"
+    pageRef = "/currently-brewing"
+    weight = 60
+  [[menus.main]]
+    name = "About"
+    pageRef = "/about"
+    weight = 70
+
+[markup.goldmark.renderer]
+  unsafe = true   # allow raw HTML in posts (embeds, demos)
+
+[markup.highlight]
+  noClasses = false

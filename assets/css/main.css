@@ -1,0 +1,32 @@
+/* Placeholder styling. The design pass replaces this file wholesale. */
+:root {
+  --bg: #fdfcfa; --fg: #1f1d1a; --muted: #6b665e; --accent: #8a4b1f; --rule: #e6e1d8;
+  --measure: 40rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #161513; --fg: #ece8e1; --muted: #a39d93; --accent: #e0a070; --rule: #2e2b27; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 1.0625rem/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main, .site-header, .site-footer { max-width: var(--measure); margin: 0 auto; padding: 0 1rem; }
+a { color: var(--accent); }
+.site-header { padding-top: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+.site-name { font-weight: 700; text-decoration: none; color: var(--fg); }
+.site-header nav { display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin-top: .5rem; font-size: .95rem; }
+.site-header nav a { text-decoration: none; }
+.site-header nav a[aria-current] { text-decoration: underline; }
+main { padding-top: 2rem; padding-bottom: 3rem; }
+.breadcrumb { font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
+.subtitle, .meta, .tagline, .empty, time { color: var(--muted); }
+.post-list, .section-list { list-style: none; padding: 0; }
+.post-list li, .section-list li { margin: .75rem 0; }
+.post-list p { margin: .25rem 0 0; color: var(--muted); }
+.post-list time { font-size: .85rem; margin-left: .5rem; }
+.status { font-size: .8rem; border: 1px solid var(--rule); border-radius: 999px; padding: 0 .5rem; margin-left: .5rem; }
+blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+pre { overflow-x: auto; padding: 1rem; background: var(--rule); border-radius: 4px; }
+img, iframe { max-width: 100%; }
+.site-footer { padding-top: 1rem; padding-bottom: 2rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
