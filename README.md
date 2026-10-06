@@ -19,6 +19,11 @@ Each command starts the post from that section's default shape (`archetypes/`). 
 - **Section:** the folder a post sits in. It drives the breadcrumb. Moving a post to another folder never changes its link.
 - **Drafts:** `draft: true` keeps a post off the live site. Delete the line to publish.
 - **Themes:** `themes: [ai-that-ships]` groups posts across sections at `/themes/`.
+- **Workbench beats:** a prototype can put its four beats in front matter (`beats:`) to get the numbered layout, or just use `##` headings in the body. Both work.
+- **Homepage:** the hero, credibility strip and the three flagship pieces live in `content/_index.md`. A flagship piece shows once it's published.
+- **Currently Brewing:** the roaster log is `data/roasters.yaml`; a roaster appears once its notes are filled in. "This month" is in `content/currently-brewing/_index.md`.
+- **Road Trip Mode** (the Konami code) reads its stops from `data/roadtrip.yaml`.
+- **About and Currently Brewing drafts** wait in `drafts/`; see `drafts/README.md`.
 
 ## Preview locally
 
@@ -32,10 +37,10 @@ Push to `main`. The workflow in `.github/workflows/deploy.yml` builds and deploy
 
 ## Interactive demos
 
-Put a self-contained demo in `static/demos/<name>/index.html`; it is served at `/demos/<name>/`. Embed it in a post with:
+Put a self-contained demo at `static/<post-slug>/demo/index.html`; it is served at `/<post-slug>/demo/`, right under its post. Context Passport's lives there now. Link to it, or embed it with:
 
 ```html
-<iframe src="/demos/<name>/" style="width:100%;height:600px;border:0"></iframe>
+<iframe src="/context-passport/demo/" style="width:100%;height:600px;border:0"></iframe>
 ```
 
 ## Layout
@@ -44,7 +49,10 @@ Put a self-contained demo in `static/demos/<name>/index.html`; it is served at `
 | --- | --- |
 | `content/` | All writing, one folder per section |
 | `layouts/` | HTML templates (header, breadcrumb, lists, 404) |
-| `assets/css/main.css` | All styling, one file, easy to replace |
+| `assets/css/tokens.css` | Every color, font and size. Edit only this to re-skin the site |
+| `assets/css/site.css` | Layout and components; reads the tokens |
+| `assets/js/easter-eggs.js` | Konami code, milk-and-sugar button, console note |
+| `data/` | Roaster log and road trip stops |
 | `archetypes/` | Starting shape for each kind of post |
 | `static/` | Files copied as-is (images, demos, favicon) |
 | `hugo.toml` | Site title, menu, flat-link rules |

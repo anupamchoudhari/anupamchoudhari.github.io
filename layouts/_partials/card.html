@@ -1,0 +1,6 @@
+<article>
+  {{ partial "status-tag.html" . }}
+  <h3>{{ .Title }}</h3>
+  {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  <a href="{{ .RelPermalink }}">{{ with .Params.cta }}{{ . }}{{ else }}{{ .RelPermalink | strings.TrimSuffix "/" }}{{ end }} →</a>
+</article>

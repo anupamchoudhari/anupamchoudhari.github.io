@@ -1,0 +1,7 @@
+{{/* Home / Section / Post. The section is the folder the post sits in. */}}
+<div class="crumb">
+  {{ range .Ancestors.Reverse }}
+    <a href="{{ .RelPermalink }}">{{ if .IsHome }}Home{{ else }}{{ .Title }}{{ end }}</a> <span>/</span>
+  {{ end }}
+  <span>{{ .Title }}</span>
+</div>

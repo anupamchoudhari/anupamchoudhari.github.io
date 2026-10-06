@@ -1,4 +1,9 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<ul class="post-list">{{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ len .Pages }})</li>{{ end }}</ul>
+<section class="view">
+  {{ partial "crumb.html" . }}
+  <div class="page-head"><h2>{{ .Title }}</h2></div>
+  <div class="latest">
+    {{ range .Pages }}<div class="row"><span class="where">{{ len .Pages }} posts</span><span class="what"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></span></div>{{ end }}
+  </div>
+</section>
 {{ end }}

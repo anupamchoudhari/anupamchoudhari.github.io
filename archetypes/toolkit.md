@@ -5,7 +5,7 @@ date: {{ .Date }}
 draft: true
 description: ""
 themes: []   # ai-that-ships, deciding-what-to-build, skills-talent-work, leadership-from-books
-kind: framework   # framework | mental-model
+kind: framework   # framework | mental-model (shows as the label in lists)
 ---
 
 ## What it is

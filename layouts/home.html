@@ -1,25 +1,36 @@
 {{ define "main" }}
-<section class="hero">
-  <h1>{{ site.Title }}</h1>
-  <p class="tagline">{{ site.Params.tagline }}</p>
-  {{ .Content }}
-</section>
+<section class="view">
+  <div class="hero">
+    {{ with .Params.eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+    <h1>{{ .Params.headline | markdownify }}</h1>
+    {{ with .Params.lede }}<p class="lede">{{ . }}</p>{{ end }}
+    {{ with .Params.sub }}<p class="sub">{{ . }}</p>{{ end }}
+  </div>
 
-<section class="sections">
-  <h2>Sections</h2>
-  <ul class="section-list">
-    {{ range site.Menus.main }}
-      {{ with .Page }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Params.subtitle }} <span class="subtitle">{{ . }}</span>{{ end }}</li>
-      {{ end }}
-    {{ end }}
-  </ul>
-</section>
+  {{ with .Params.credibility }}
+  <div class="strip">{{ range . }}<span>{{ . | markdownify }}</span>{{ end }}</div>
+  {{ end }}
 
-{{ with first 5 (where site.RegularPages "Section" "ne" "") }}
-<section class="recent">
-  <h2>Recently</h2>
-  {{ partial "post-list.html" . }}
+  <a class="cta" href="{{ "workbench/" | relURL }}">Start with the Workbench →</a>
+
+  {{/* Flagship pieces are listed by path in content/_index.md; drafts and
+       missing posts are skipped, and the block hides until one is live. */}}
+  {{ $flagship := slice }}
+  {{ range .Params.flagship }}{{ with site.GetPage . }}{{ $flagship = $flagship | append . }}{{ end }}{{ end }}
+  {{ with $flagship }}
+  <div>
+    <p class="eyebrow">Three pieces to judge me on</p>
+    <div class="flagship">{{ range . }}{{ partial "card.html" . }}{{ end }}</div>
+  </div>
+  {{ end }}
+
+  {{ with first 5 (where site.RegularPages "Section" "ne" "") }}
+  <div>
+    <p class="eyebrow">Recently</p>
+    <div class="latest">
+      {{ range . }}{{ partial "row.html" (dict "page" . "where" (.CurrentSection.Title | strings.TrimPrefix "The ")) }}{{ end }}
+    </div>
+  </div>
+  {{ end }}
 </section>
-{{ end }}
 {{ end }}

@@ -1,19 +1,34 @@
 {{ define "main" }}
-<article>
-  {{ partial "breadcrumb.html" . }}
-  <header class="page-header">
-    <h1>{{ .Title }}</h1>
-    {{ with .Params.subtitle }}<p class="subtitle">{{ . }}</p>{{ end }}
-    {{ if and .IsPage (ne .Section "") }}
-    <p class="meta">
-      {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>{{ end }}
-      {{ with .Params.status }} · <span class="status status-{{ . }}">{{ . | humanize }}</span>{{ end }}
-    </p>
+<section class="view">
+  {{ partial "crumb.html" . }}
+  <div class="page-head">
+    {{ partial "status-tag.html" . }}
+    <h2>{{ .Title }}</h2>
+    {{ if ne .Section "" }}
+    {{ $meta := slice (printf "anupamchoudhari.com%s" (.RelPermalink | strings.TrimSuffix "/")) }}
+    {{ with .Params.byline }}{{ $meta = $meta | append . }}{{ end }}
+    {{ with .Params.meta }}{{ $meta = $meta | append . }}{{ end }}
+    {{ with .GetTerms "themes" }}{{ $names := slice }}{{ range . }}{{ $names = $names | append .LinkTitle }}{{ end }}{{ $meta = $meta | append (printf "themes: %s" (delimit $names ", ")) }}{{ end }}
+    <p class="sub mono">{{ delimit $meta " · " }}</p>
+    {{ else }}
+    {{ with .Description }}<p class="sub">{{ . }}</p>{{ end }}
     {{ end }}
-  </header>
-  {{ .Content }}
-  {{ with .GetTerms "themes" }}
-  <p class="themes">Themes: {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}">{{ $t.LinkTitle }}</a>{{ end }}</p>
+  </div>
+
+  {{/* Workbench posts can carry their four beats in front matter (see archetypes/workbench.md). */}}
+  {{ with .Params.beats }}
+  <ol class="beats">
+    {{ range . }}<li><div><b>{{ .name }}</b><span>{{ .text | markdownify }}</span></div></li>{{ end }}
+  </ol>
   {{ end }}
-</article>
+
+  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+  {{ with .Params.bet }}
+  <div class="callout">
+    <p class="eyebrow">The bet</p>
+    <p>{{ . | markdownify }}</p>
+  </div>
+  {{ end }}
+</section>
 {{ end }}

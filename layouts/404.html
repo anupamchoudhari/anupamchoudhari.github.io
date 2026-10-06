@@ -1,5 +1,11 @@
 {{ define "main" }}
-<h1>404</h1>
-<p>This page is stuck in a government office. Expected processing time: 7 to 10 working days.</p>
-<p><a href="{{ "/" | relURL }}">Head back home</a></p>
+<section class="view">
+  <div class="page-head">
+    <p class="eyebrow">404</p>
+    <h2>This page is stuck in a government office.</h2>
+    <p class="sub">Expected processing time: 7 to 10 working days. You are welcome to wait on the bench, but the bench is also pending approval.</p>
+  </div>
+  <div class="stamp">Received · not yet forwarded</div>
+  <p><a href="{{ "/" | relURL }}">Go back to something that exists →</a></p>
+</section>
 {{ end }}

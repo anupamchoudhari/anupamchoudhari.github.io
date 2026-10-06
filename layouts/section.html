@@ -1,13 +1,19 @@
 {{ define "main" }}
-{{ partial "breadcrumb.html" . }}
-<header class="page-header">
-  <h1>{{ .Title }}</h1>
-  {{ with .Params.subtitle }}<p class="subtitle">{{ . }}</p>{{ end }}
-</header>
-{{ .Content }}
-{{ with .Pages }}
-  {{ partial "post-list.html" . }}
-{{ else }}
-  <p class="empty">Nothing here yet. It's brewing.</p>
-{{ end }}
+<section class="view">
+  {{ partial "crumb.html" . }}
+  <div class="page-head">
+    {{ with .Params.num }}<p class="eyebrow">Section {{ . }}</p>{{ end }}
+    <h2>{{ .Title }}</h2>
+    {{ with .Description }}<p class="sub">{{ . }}</p>{{ end }}
+  </div>
+  {{ block "section-top" . }}{{ end }}
+  {{ with .Pages }}
+  <div class="latest">
+    {{ range . }}{{ partial "row.html" (dict "page" . "where" (.Params.kind | default "" | humanize)) }}{{ end }}
+  </div>
+  {{ else }}
+  <p class="mono">Nothing here yet. It's brewing.</p>
+  {{ end }}
+  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+</section>
 {{ end }}

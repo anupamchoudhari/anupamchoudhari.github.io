@@ -1,8 +1,8 @@
 ---
 title: "Three Takeaways"
+num: "03"
 subtitle: "Books and podcasts"
+description: "Three takeaways per book, one place I disagree, one thing I tried at work. Episodes get the same treatment, with the guest as the headline and the show as the byline."
+
 ---
-
-Three takeaways per book or episode, one place I disagree, and one thing I tried at work.
-
-**On rotation:** Lenny's Podcast · Founders with David Senra · The Diary of a CEO · 20VC
+<p class="mono">On rotation: Lenny's Podcast · Founders · The Diary of a CEO · 20VC</p>

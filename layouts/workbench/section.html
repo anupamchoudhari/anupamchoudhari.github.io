@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="view">
+  {{ partial "crumb.html" . }}
+  <div class="page-head">
+    <p class="eyebrow">Section {{ .Params.num }}</p>
+    <h2>{{ .Title }}</h2>
+    {{ with .Description }}<p class="sub">{{ . }}</p>{{ end }}
+  </div>
+  {{ with .Pages }}
+  <div class="flagship">{{ range . }}{{ partial "card.html" . }}{{ end }}</div>
+  {{ else }}
+  <p class="mono">Nothing on the bench yet. Soon.</p>
+  {{ end }}
+  {{ with .Content }}<div class="callout">{{ . }}</div>{{ end }}
+</section>
+{{ end }}

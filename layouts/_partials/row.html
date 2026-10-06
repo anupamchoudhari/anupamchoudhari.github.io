@@ -1,0 +1,6 @@
+{{/* One line in a list. `where` is the post's kind (Book, Framework, Age 6+...). */}}
+<div class="row">
+  <span class="where">{{ .where }}</span>
+  <span class="what"><a href="{{ .page.RelPermalink }}">{{ .page.Title }}</a></span>
+  {{ with .page.Description }}<span class="note">{{ . }}</span>{{ end }}
+</div>

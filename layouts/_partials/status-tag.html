@@ -1,0 +1,5 @@
+{{/* Verdict pill. Front matter status: shipped | parked | killed-with-dignity */}}
+{{ with .Params.status }}
+  {{ $class := cond (hasPrefix . "killed") "killed" . }}
+  <span class="tag {{ $class }}">{{ . | humanize }}</span>
+{{ end }}

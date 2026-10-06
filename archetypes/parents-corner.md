@@ -5,7 +5,7 @@ date: {{ .Date }}
 draft: true
 description: ""
 themes: []   # ai-that-ships, deciding-what-to-build, skills-talent-work, leadership-from-books
-age: ""
+kind: "Age 6+"   # shows as the label in lists
 rating: ""        # her rating, out of five
 ---
 

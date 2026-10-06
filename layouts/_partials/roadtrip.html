@@ -1,0 +1,21 @@
+{{/* Road Trip Mode: the Konami egg. Stops live in data/roadtrip.yaml. */}}
+<div class="rt" id="road-trip" hidden>
+  <div class="rt-inner">
+    <p class="eyebrow">Easter egg unlocked · Road Trip Mode</p>
+    <h2>Four years, two home bases, one very patient car</h2>
+    <p class="mono">2007–2011 · the drives I still measure other drives against</p>
+    <ul class="route">
+      {{ range hugo.Data.roadtrip }}
+      <li{{ if .base }} data-base="true"{{ end }}>
+        <span class="dot"></span>
+        <span class="stop">{{ .place }}</span>
+        <span class="yr">{{ .when }}</span>
+        <span class="note">{{ .note }}</span>
+      </li>
+      {{ end }}
+    </ul>
+    <div class="rt-foot">
+      <button class="cta" id="road-trip-close" type="button">Back to the site</button>
+    </div>
+  </div>
+</div>

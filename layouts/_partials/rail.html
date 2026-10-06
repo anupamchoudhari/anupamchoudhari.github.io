@@ -1,0 +1,22 @@
+{{/* The left index rail: every section, visible from every page. Order and
+     numbers come from the main menu in hugo.toml and each section's `num`. */}}
+<aside class="rail">
+  <div class="wordmark">
+    <a class="name" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    <span class="role">{{ site.Params.tagline }}</span>
+  </div>
+  <nav aria-label="Sections">
+    <a href="{{ "/" | relURL }}"{{ if .IsHome }} aria-current="page"{{ end }}>
+      <span class="num">—</span><span class="lbl">Home</span><span class="sub">the front door</span>
+    </a>
+    {{ range site.Menus.main }}
+      {{ $p := .Page }}{{ if $p }}
+      {{ $current := or (eq $p $) (and $p.IsSection (eq $.Section $p.Section) (not $.IsHome)) }}
+      <a href="{{ .URL }}"{{ if $current }} aria-current="page"{{ end }}>
+        <span class="num">{{ $p.Params.num }}</span>
+        <span class="lbl">{{ .Name }}</span>
+        <span class="sub">{{ with $p.Params.subtitle }}{{ . | lower }}{{ end }}</span>
+      </a>
+    {{ end }}{{ end }}
+  </nav>
+</aside>

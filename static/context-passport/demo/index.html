@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+  :root { color-scheme: light; }
+  html, body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Context Passport</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: a travel-document data page up top, then a two-column working area
+     (pages of the passport on the left, the active operation on the right)
+     that stacks to one column on a phone. */
+  :root {
+    --paper: #e8ebe8;
+    --card: #f7f9f7;
+    --card-2: #eff2ef;
+    --ink: #141d1a;
+    --muted: #5c6b65;
+    --faint: #8a9690;
+    --rule: #c6cdc8;
+    --accent: #1a5c49;
+    --accent-soft: #d8e7e0;
+    --stamp: #96473a;
+    --stamp-soft: #efdcd8;
+    --stale: #7d611a;
+    --stale-soft: #efe6cc;
+    --shadow: 0 1px 2px rgba(20,29,26,.08), 0 8px 24px -16px rgba(20,29,26,.3);
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #101614;
+      --card: #19211e;
+      --card-2: #1f2825;
+      --ink: #e4eae6;
+      --muted: #9aa8a2;
+      --faint: #76847e;
+      --rule: #2f3b37;
+      --accent: #63c3a5;
+      --accent-soft: #1b322b;
+      --stamp: #d8897b;
+      --stamp-soft: #35211e;
+      --stale: #d4b35f;
+      --stale-soft: #2e2615;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.8);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #101614;
+    --card: #19211e;
+    --card-2: #1f2825;
+    --ink: #e4eae6;
+    --muted: #9aa8a2;
+    --faint: #76847e;
+    --rule: #2f3b37;
+    --accent: #63c3a5;
+    --accent-soft: #1b322b;
+    --stamp: #d8897b;
+    --stamp-soft: #35211e;
+    --stale: #d4b35f;
+    --stale-soft: #2e2615;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.8);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.5;
+    padding-inline: 16px;
+    padding-block: 28px 56px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+
+  .label {
+    font-family: var(--display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+
+  /* ---- data page ---- */
+  .datapage {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    position: relative;
+  }
+  .datapage::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(115deg, transparent 0 9px, color-mix(in srgb, var(--accent) 7%, transparent) 9px 10px);
+    pointer-events: none;
+  }
+  .dp-top {
+    display: flex; flex-wrap: wrap; gap: 20px 32px;
+    align-items: flex-start; justify-content: space-between;
+    padding: 20px 22px 18px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .holder { min-width: 0; display: flex; flex-direction: column; gap: 7px; }
+  .holder h1 {
+    font-size: clamp(24px, 5.2vw, 34px);
+    font-weight: 700;
+    letter-spacing: -.015em;
+    line-height: 1.05;
+  }
+  .holder .sub { color: var(--muted); font-size: 15px; max-width: 48ch; }
+  .dp-fields { display: flex; flex-wrap: wrap; gap: 14px 26px; }
+  .field { display: flex; flex-direction: column; gap: 2px; }
+  .field .v { font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+
+  .stamp {
+    font-family: var(--display);
+    font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--stamp);
+    border: 1.5px solid var(--stamp);
+    border-radius: 2px;
+    padding: 5px 9px;
+    transform: rotate(-4deg);
+    background: var(--stamp-soft);
+    align-self: flex-start;
+    white-space: nowrap;
+  }
+  .mrz {
+    font-family: var(--mono);
+    font-size: clamp(9px, 2.2vw, 12.5px);
+    letter-spacing: .06em;
+    color: var(--muted);
+    background: var(--card-2);
+    padding: 11px 22px 13px;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: relative;
+  }
+  .mrz div + div { margin-top: 2px; }
+
+  /* ---- working area ---- */
+  .cols { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 20px; align-items: start; }
+  @media (max-width: 760px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    min-width: 0;
+  }
+  .panel-head {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  }
+  .panel-body { padding: 16px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+
+  nav.pages { display: flex; flex-direction: column; }
+  nav.pages button {
+    all: unset;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--display); font-size: 14px; font-weight: 500;
+    color: var(--ink);
+  }
+  nav.pages button:last-child { border-bottom: 0; }
+  nav.pages button:hover { background: var(--card-2); }
+  nav.pages button[aria-current="true"] {
+    background: var(--accent-soft);
+    box-shadow: inset 3px 0 0 var(--accent);
+  }
+  nav.pages .count { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tabs button {
+    all: unset; cursor: pointer;
+    font-family: var(--display); font-size: 12px; font-weight: 600;
+    letter-spacing: .04em; text-transform: uppercase;
+    padding: 7px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+  .tabs button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--card); }
+  .tabs button:hover:not([aria-selected="true"]) { color: var(--ink); border-color: var(--faint); }
+
+  /* ---- entries ---- */
+  .entry {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .entry:last-child { border-bottom: 0; }
+  .entry .stmt { font-size: 16px; min-width: 0; }
+  .entry .meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; grid-column: 1; }
+  .entry .acts { display: flex; gap: 6px; grid-row: 1 / span 2; align-self: center; }
+  @media (max-width: 560px) {
+    .entry { grid-template-columns: minmax(0, 1fr); }
+    .entry .acts { grid-row: auto; grid-column: 1; }
+  }
+
+  .chip {
+    font-family: var(--display); font-size: 10.5px; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase;
+    padding: 3px 7px; border-radius: 2px;
+    border: 1px solid var(--rule); color: var(--muted);
+    white-space: nowrap;
+  }
+  .chip.src { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  .chip.stale { border-color: var(--stale); color: var(--stale); background: var(--stale-soft); }
+  .chip.sealed { border-color: var(--stamp); color: var(--stamp); background: var(--stamp-soft); }
+  .chip.scope { font-family: var(--mono); text-transform: none; letter-spacing: 0; font-weight: 400; }
+
+  button.act {
+    all: unset; cursor: pointer;
+    font-family: var(--display); font-size: 11.5px; font-weight: 600;
+    letter-spacing: .04em;
+    padding: 5px 9px; border: 1px solid var(--rule); border-radius: 2px;
+    color: var(--muted); white-space: nowrap;
+  }
+  button.act:hover { color: var(--ink); border-color: var(--faint); background: var(--card-2); }
+  button.act.primary { background: var(--accent); border-color: var(--accent); color: var(--card); }
+  button.act.primary:hover { color: var(--card); filter: brightness(1.08); }
+  button.act.danger:hover { color: var(--stamp); border-color: var(--stamp); }
+  button.act[disabled] { opacity: .45; cursor: default; }
+
+  :where(button, [tabindex]):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .note { color: var(--muted); font-size: 14.5px; max-width: 62ch; }
+  .note strong { font-weight: 600; color: var(--ink); }
+
+  .queue-dot {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--stale); margin-left: 6px; vertical-align: 1px;
+  }
+
+  /* ---- intake ---- */
+  .tools { display: flex; flex-wrap: wrap; gap: 8px; }
+  .candidate {
+    border: 1px solid var(--rule); border-radius: 2px;
+    padding: 13px; display: flex; flex-direction: column; gap: 10px;
+    background: var(--card-2);
+  }
+  .candidate .stmt { font-size: 15.5px; }
+  .candidate input[type="text"] {
+    font-family: var(--body); font-size: 15.5px;
+    width: 100%; padding: 7px 9px;
+    border: 1px solid var(--faint); border-radius: 2px;
+    background: var(--card); color: var(--ink);
+  }
+  .cand-acts { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+  /* ---- handover ---- */
+  .audiences { display: flex; flex-wrap: wrap; gap: 8px; }
+  .aud {
+    all: unset; cursor: pointer;
+    border: 1px solid var(--rule); border-radius: 2px;
+    padding: 9px 12px; min-width: 0;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .aud .n { font-family: var(--display); font-size: 13.5px; font-weight: 600; }
+  .aud .d { font-size: 12.5px; color: var(--muted); }
+  .aud[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+  .aud:hover { border-color: var(--faint); }
+
+  pre.block {
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.6;
+    background: var(--card-2);
+    border: 1px solid var(--rule); border-left: 3px solid var(--accent);
+    border-radius: 2px;
+    padding: 14px; margin: 0;
+    overflow-x: auto;
+    white-space: pre;
+    color: var(--ink);
+  }
+  .meter { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: baseline; }
+  .meter .big { font-family: var(--mono); font-size: 22px; font-variant-numeric: tabular-nums; }
+
+  .withheld {
+    border: 1px dashed var(--stamp); border-radius: 2px;
+    background: var(--stamp-soft); color: var(--stamp);
+    padding: 10px 12px; font-size: 14px;
+  }
+
+  footer.foot { color: var(--faint); font-size: 13px; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section class="datapage" aria-label="Passport data page">
+    <div class="dp-top">
+      <div class="holder">
+        <span class="label">Context Passport · type P-CTX</span>
+        <h1>Anupam Choudhari</h1>
+        <p class="sub">One context store I own, stamped by the tools that have read it, handed over in slices.</p>
+        <div class="dp-fields">
+          <div class="field"><span class="label">Pages</span><span class="v">04</span></div>
+          <div class="field"><span class="label">Entries</span><span class="v" id="f-entries">0</span></div>
+          <div class="field"><span class="label">Stamped by</span><span class="v" id="f-tools">0</span></div>
+          <div class="field"><span class="label">Needs review</span><span class="v" id="f-review">0</span></div>
+        </div>
+      </div>
+      <span class="stamp">Demo data · nothing is stored</span>
+    </div>
+    <div class="mrz" aria-hidden="true">
+      <div id="mrz1"></div>
+      <div id="mrz2"></div>
+    </div>
+  </section>
+
+  <div class="cols">
+    <aside class="panel" aria-label="Pages">
+      <div class="panel-head"><span class="label">Pages</span></div>
+      <nav class="pages" id="nav"></nav>
+    </aside>
+
+    <section class="panel" style="min-width:0">
+      <div class="panel-head">
+        <div class="tabs" role="tablist" aria-label="Operation">
+          <button role="tab" id="tab-passport" aria-selected="true" data-view="passport">Passport</button>
+          <button role="tab" id="tab-intake" aria-selected="false" data-view="intake">Intake</button>
+          <button role="tab" id="tab-handover" aria-selected="false" data-view="handover">Handover</button>
+        </div>
+        <span class="label" id="view-hint"></span>
+      </div>
+      <div class="panel-body" id="view"></div>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <span>Prototype. Mock data, no backend, nothing leaves this page.</span>
+    <span>Light roast, black.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var SOURCES = ["Claude", "ChatGPT", "Cursor", "Hand-written"];
+
+  var PAGES = [
+    { id: "identity", name: "Who I am" },
+    { id: "work", name: "How I work" },
+    { id: "building", name: "What I'm building" },
+    { id: "prefs", name: "Preferences" }
+  ];
+
+  // days = days since last confirmed. Anything over 120 goes to the review queue.
+  var state = {
+    page: "identity",
+    view: "passport",
+    audience: "code",
+    connected: ["Claude", "Cursor"],
+    entries: [
+      { id: 1, page: "identity", stmt: "Builds AI products. Fifteen years, twice a co-founder.", src: "Hand-written", days: 4, scopes: ["code", "research", "recruit"] },
+      { id: 2, page: "identity", stmt: "Based in Bangalore. From Thane, by way of Rochester and Los Alamos.", src: "Claude", days: 11, scopes: ["research", "recruit", "social"] },
+      { id: 3, page: "identity", stmt: "Writes in English first. Marathi and Hindi at home.", src: "Hand-written", days: 60, scopes: ["code", "research", "recruit", "social"] },
+      { id: 4, page: "identity", stmt: "MS in Computer Science, AI and ML.", src: "Hand-written", days: 190, scopes: ["recruit"] },
+
+      { id: 10, page: "work", stmt: "Wants the decision written down, including the bets that lost.", src: "Claude", days: 3, scopes: ["code", "research", "recruit"] },
+      { id: 11, page: "work", stmt: "Argue about the definition of correct before the approach.", src: "ChatGPT", days: 240, scopes: ["code", "research"] },
+      { id: 12, page: "work", stmt: "Prefers a working prototype over a document that is right.", src: "Cursor", days: 6, scopes: ["code", "research", "recruit"] },
+      { id: 13, page: "work", stmt: "Short answers. No preamble, no restating the question.", src: "Claude", days: 1, scopes: ["code", "research", "social"] },
+
+      { id: 20, page: "building", stmt: "A personal agent harness, on DeerFlow.", src: "Cursor", days: 8, scopes: ["code", "research"] },
+      { id: 21, page: "building", stmt: "Graph RAG over a knowledge graph of skills, occupations and traits, for shortlisting resumes.", src: "Claude", days: 14, scopes: ["code", "research", "recruit"] },
+      { id: 22, page: "building", stmt: "A personal site meant to last twenty years.", src: "Claude", days: 2, scopes: ["research", "social"] },
+
+      { id: 30, page: "prefs", stmt: "Coffee: light roast, black, no sugar.", src: "Claude", days: 5, scopes: ["social"] },
+      { id: 31, page: "prefs", stmt: "No seafood. Everything else is negotiable.", src: "ChatGPT", days: 150, scopes: ["social"] },
+      { id: 32, page: "prefs", stmt: "Hates the word “leverage” in anything written for people.", src: "Claude", days: 9, scopes: ["code", "research", "recruit", "social"] },
+      { id: 33, page: "prefs", stmt: "Family stays out of anything public. No names, no photos.", src: "Hand-written", days: 0, scopes: [], sealed: true }
+    ]
+  };
+
+  var CANDIDATES = {
+    "ChatGPT": [
+      { page: "work", stmt: "Rewrites anything that opens with “In today’s fast-paced world”.", scopes: ["code", "research"] },
+      { page: "prefs", stmt: "Asks for tables instead of paragraphs when comparing options.", scopes: ["code", "research"] },
+      { page: "identity", stmt: "Is an engineering manager.", scopes: ["recruit"], wrong: true }
+    ],
+    "Cursor": [
+      { page: "work", stmt: "Wants the test that proves the bug before the fix.", scopes: ["code"] },
+      { page: "building", stmt: "Keeps prototypes in one repo per idea, never a monorepo.", scopes: ["code"] },
+      { page: "prefs", stmt: "Prefers tabs over spaces.", scopes: ["code"], wrong: true }
+    ],
+    "Claude": [
+      { page: "work", stmt: "Judges an AI feature by what happens when the model underneath gets twice as good.", scopes: ["code", "research", "recruit"] },
+      { page: "building", stmt: "Treats a parked project as a dated bet, not a failure.", scopes: ["research"] },
+      { page: "prefs", stmt: "Enjoys long preambles before the answer.", scopes: ["social"], wrong: true }
+    ],
+    "Hand-written": []
+  };
+
+  var AUDIENCES = [
+    { id: "code", n: "Coding assistant", d: "Lives in the editor" },
+    { id: "research", n: "Research agent", d: "Drafts and digs" },
+    { id: "recruit", n: "Recruiter-facing agent", d: "Answers about my work" },
+    { id: "social", n: "A friend’s dinner planner", d: "Needs the food rules" }
+  ];
+
+  var intake = { tool: null, items: [], done: 0 };
+  var nextId = 100;
+
+  var $ = function (s) { return document.querySelector(s); };
+  var view = $("#view");
+
+  function isStale(e) { return !e.sealed && e.days > 120; }
+  function ago(d) {
+    if (d === 0) return "confirmed today";
+    if (d === 1) return "confirmed yesterday";
+    if (d < 30) return "confirmed " + d + " days ago";
+    var m = Math.round(d / 30);
+    return "confirmed " + m + " month" + (m > 1 ? "s" : "") + " ago";
+  }
+  function onPage(id) { return state.entries.filter(function (e) { return e.page === id; }); }
+  function reviewCount() { return state.entries.filter(isStale).length; }
+  function pad(s, n) { s = s.slice(0, n); while (s.length < n) s += "<"; return s; }
+  function num(n) { return (n < 10 ? "0" : "") + n; }
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  /* ---------- chrome ---------- */
+
+  function renderHeader() {
+    $("#f-entries").textContent = num(state.entries.length);
+    $("#f-tools").textContent = num(state.connected.length);
+    var r = reviewCount();
+    $("#f-review").textContent = num(r);
+    $("#mrz1").textContent = "CTXP<IND" + pad("CHOUDHARI<<ANUPAM", 36);
+    $("#mrz2").textContent = pad("PCTX" + num(PAGES.length) + "E" + num(state.entries.length) +
+      "S" + num(state.connected.length) + "R" + num(r) + "<SEALED01<2026", 44);
+  }
+
+  function renderNav() {
+    var nav = $("#nav");
+    nav.textContent = "";
+    PAGES.forEach(function (p) {
+      var b = el("button");
+      b.setAttribute("aria-current", state.page === p.id ? "true" : "false");
+      b.appendChild(el("span", null, p.name));
+      var items = onPage(p.id);
+      var c = el("span", "count", String(items.length));
+      if (items.some(isStale)) {
+        var dot = el("span", "queue-dot");
+        dot.title = "has entries that need review";
+        c.appendChild(dot);
+      }
+      b.appendChild(c);
+      b.addEventListener("click", function () {
+        state.page = p.id;
+        if (state.view !== "passport") { state.view = "passport"; renderTabs(); }
+        render();
+      });
+      nav.appendChild(b);
+    });
+  }
+
+  function renderTabs() {
+    Array.prototype.forEach.call(document.querySelectorAll('[role="tab"]'), function (t) {
+      t.setAttribute("aria-selected", t.dataset.view === state.view ? "true" : "false");
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[role="tab"]'), function (t) {
+    t.addEventListener("click", function () {
+      state.view = t.dataset.view;
+      if (state.view === "intake") { intake = { tool: null, items: [], done: 0 }; }
+      renderTabs();
+      render();
+    });
+  });
+
+  /* ---------- passport view ---------- */
+
+  function viewPassport() {
+    var page = PAGES.filter(function (p) { return p.id === state.page; })[0];
+    $("#view-hint").textContent = page.name;
+
+    var note = el("p", "note");
+    note.appendChild(el("strong", null, "Every entry carries its source and its age. "));
+    note.appendChild(document.createTextNode(
+      "Anything unconfirmed for four months is pulled into review, because a context store nobody prunes turns into a liability about a year in."));
+    view.appendChild(note);
+
+    var list = el("div");
+    var items = onPage(state.page);
+
+    items.forEach(function (e) {
+      var row = el("div", "entry");
+      row.appendChild(el("p", "stmt", e.stmt));
+
+      var meta = el("div", "meta");
+      meta.appendChild(el("span", "chip src", "via " + e.src));
+      if (e.sealed) {
+        meta.appendChild(el("span", "chip sealed", "Sealed · never handed over"));
+      } else if (isStale(e)) {
+        meta.appendChild(el("span", "chip stale", "Needs review · " + ago(e.days)));
+      } else {
+        meta.appendChild(el("span", "chip", ago(e.days)));
+      }
+      if (!e.sealed) {
+        e.scopes.forEach(function (s) {
+          var a = AUDIENCES.filter(function (x) { return x.id === s; })[0];
+          if (a) meta.appendChild(el("span", "chip scope", a.n));
+        });
+        if (e.scopes.length === 0) meta.appendChild(el("span", "chip scope", "no audience yet"));
+      }
+      row.appendChild(meta);
+
+      var acts = el("div", "acts");
+      if (e.sealed) {
+        var lock = el("button", "act", "Sealed");
+        lock.disabled = true;
+        acts.appendChild(lock);
+      } else {
+        var conf = el("button", "act" + (isStale(e) ? " primary" : ""), isStale(e) ? "Still true" : "Confirm");
+        conf.addEventListener("click", function () { e.days = 0; render(); });
+        var rev = el("button", "act danger", "Revoke");
+        rev.addEventListener("click", function () {
+          state.entries = state.entries.filter(function (x) { return x.id !== e.id; });
+          render();
+        });
+        acts.appendChild(conf);
+        acts.appendChild(rev);
+      }
+      row.appendChild(acts);
+      list.appendChild(row);
+    });
+
+    if (items.length === 0) {
+      list.appendChild(el("p", "note", "Nothing on this page yet. Connect a tool under Intake and it will propose what it thinks it knows."));
+    }
+    view.appendChild(list);
+  }
+
+  /* ---------- intake view ---------- */
+
+  function viewIntake() {
+    $("#view-hint").textContent = intake.tool ? intake.tool : "connect a tool";
+
+    var note = el("p", "note");
+    note.appendChild(el("strong", null, "Nothing enters the passport unreviewed. "));
+    note.appendChild(document.createTextNode(
+      "A connected tool proposes what it thinks it learned about me. I accept, correct, or throw it out. Assistant memory works the other way round, which is the thing I was reacting to."));
+    view.appendChild(note);
+
+    var tools = el("div", "tools");
+    SOURCES.forEach(function (t) {
+      if (t === "Hand-written") return;
+      var connected = state.connected.indexOf(t) >= 0;
+      var b = el("button", "act" + (intake.tool === t ? " primary" : ""),
+        t + (connected ? " · stamped" : " · not connected"));
+      b.addEventListener("click", function () {
+        intake = { tool: t, done: 0, items: (CANDIDATES[t] || []).map(function (c, i) {
+          return { key: t + i, page: c.page, stmt: c.stmt, scopes: c.scopes, wrong: c.wrong, status: null, editing: false };
+        }) };
+        if (state.connected.indexOf(t) < 0) state.connected.push(t);
+        render();
+      });
+      tools.appendChild(b);
+    });
+    view.appendChild(tools);
+
+    if (!intake.tool) {
+      view.appendChild(el("p", "note", "Pick a tool. Each one proposes three candidates, and one of the three is wrong, which is roughly the real hit rate."));
+      return;
+    }
+
+    var pending = intake.items.filter(function (i) { return !i.status; });
+    if (pending.length === 0) {
+      var doneNote = el("p", "note");
+      doneNote.appendChild(el("strong", null, intake.tool + " reviewed. "));
+      doneNote.appendChild(document.createTextNode(
+        intake.done + " of " + intake.items.length + " entries accepted. The rest are gone, and " +
+        intake.tool + " does not get to propose them again."));
+      view.appendChild(doneNote);
+      var back = el("button", "act primary", "Open the passport");
+      back.addEventListener("click", function () {
+        state.view = "passport"; renderTabs(); render();
+      });
+      view.appendChild(back);
+      return;
+    }
+
+    pending.forEach(function (item) {
+      var c = el("div", "candidate");
+      var pageName = PAGES.filter(function (p) { return p.id === item.page; })[0].name;
+      c.appendChild(el("span", "label", "proposed for " + pageName));
+
+      if (item.editing) {
+        var inp = document.createElement("input");
+        inp.type = "text";
+        inp.id = "edit-" + item.key;
+        inp.value = item.stmt;
+        c.appendChild(inp);
+        var acts1 = el("div", "cand-acts");
+        var save = el("button", "act primary", "Save and accept");
+        save.addEventListener("click", function () {
+          item.stmt = inp.value.trim() || item.stmt;
+          accept(item);
+        });
+        var cancel = el("button", "act", "Cancel");
+        cancel.addEventListener("click", function () { item.editing = false; render(); });
+        acts1.appendChild(save); acts1.appendChild(cancel);
+        c.appendChild(acts1);
+      } else {
+        c.appendChild(el("p", "stmt", item.stmt));
+        var acts2 = el("div", "cand-acts");
+        var acc = el("button", "act primary", "Accept");
+        acc.addEventListener("click", function () { accept(item); });
+        var edt = el("button", "act", "Correct it");
+        edt.addEventListener("click", function () { item.editing = true; render(); });
+        var rej = el("button", "act danger", "Not true");
+        rej.addEventListener("click", function () { item.status = "rejected"; render(); });
+        acts2.appendChild(acc); acts2.appendChild(edt); acts2.appendChild(rej);
+        c.appendChild(acts2);
+      }
+      view.appendChild(c);
+    });
+  }
+
+  function accept(item) {
+    item.status = "accepted";
+    intake.done += 1;
+    state.entries.push({
+      id: nextId++, page: item.page, stmt: item.stmt,
+      src: intake.tool, days: 0, scopes: item.scopes.slice()
+    });
+    render();
+  }
+
+  /* ---------- handover view ---------- */
+
+  function buildBlock(audId) {
+    var aud = AUDIENCES.filter(function (a) { return a.id === audId; })[0];
+    var lines = ["# Context Passport — handover", "# audience: " + aud.n, ""];
+    var included = 0;
+    PAGES.forEach(function (p) {
+      var rows = onPage(p.id).filter(function (e) {
+        return !e.sealed && e.scopes.indexOf(audId) >= 0;
+      });
+      if (!rows.length) return;
+      lines.push("## " + p.name);
+      rows.forEach(function (e) {
+        lines.push("- " + e.stmt + (isStale(e) ? "  (unconfirmed)" : ""));
+        included++;
+      });
+      lines.push("");
+    });
+    if (!included) lines.push("(nothing on this passport is scoped to this audience)");
+    return { text: lines.join("\n").replace(/\n+$/, "\n"), included: included };
+  }
+
+  function viewHandover() {
+    $("#view-hint").textContent = "scoped context block";
+
+    var note = el("p", "note");
+    note.appendChild(el("strong", null, "The passport assembles only the pages an audience is allowed. "));
+    note.appendChild(document.createTextNode(
+      "This is the part that felt like a product rather than a text file: watching the block shrink as the audience changes."));
+    view.appendChild(note);
+
+    var auds = el("div", "audiences");
+    AUDIENCES.forEach(function (a) {
+      var b = el("button", "aud");
+      b.setAttribute("aria-pressed", state.audience === a.id ? "true" : "false");
+      b.appendChild(el("span", "n", a.n));
+      b.appendChild(el("span", "d", a.d));
+      b.addEventListener("click", function () { state.audience = a.id; render(); });
+      auds.appendChild(b);
+    });
+    view.appendChild(auds);
+
+    var built = buildBlock(state.audience);
+    var total = state.entries.filter(function (e) { return !e.sealed; }).length;
+    var sealed = state.entries.filter(function (e) { return e.sealed; }).length;
+
+    var meter = el("div", "meter");
+    var m1 = el("div", "field");
+    m1.appendChild(el("span", "label", "Entries handed over"));
+    m1.appendChild(el("span", "big", built.included + " / " + total));
+    var m2 = el("div", "field");
+    m2.appendChild(el("span", "label", "Characters"));
+    m2.appendChild(el("span", "big", String(built.text.length)));
+    meter.appendChild(m1); meter.appendChild(m2);
+
+    var copy = el("button", "act primary", "Copy block");
+    copy.addEventListener("click", function () {
+      var done = function () { copy.textContent = "Copied"; setTimeout(function () { copy.textContent = "Copy block"; }, 1400); };
+      try {
+        navigator.clipboard.writeText(built.text).then(done, select);
+      } catch (err) { select(); }
+      function select() {
+        var pre = $("#block");
+        if (!pre) return;
+        var r = document.createRange(); r.selectNodeContents(pre);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        copy.textContent = "Selected, press copy";
+        setTimeout(function () { copy.textContent = "Copy block"; }, 2200);
+      }
+    });
+    meter.appendChild(copy);
+    view.appendChild(meter);
+
+    var pre = el("pre", "block", built.text);
+    pre.id = "block";
+    pre.tabIndex = 0;
+    view.appendChild(pre);
+
+    var w = el("div", "withheld");
+    w.textContent = (total - built.included) + " entries withheld by scope, plus " + sealed +
+      " sealed entry that no audience ever receives.";
+    view.appendChild(w);
+  }
+
+  /* ---------- render ---------- */
+
+  function render() {
+    renderHeader();
+    renderNav();
+    view.textContent = "";
+    if (state.view === "passport") viewPassport();
+    else if (state.view === "intake") viewIntake();
+    else viewHandover();
+    var focusEdit = document.querySelector('input[type="text"]');
+    if (focusEdit) focusEdit.focus();
+  }
+
+  render();
+
+  try {
+    console.log("%cContext Passport", "font-weight:700",
+      "\nInspecting the code? Either you're hiring or you're one of us. Coffee's on me: light roast, black.");
+  } catch (e) {}
+})();
+</script>
+
+</body>
+</html>

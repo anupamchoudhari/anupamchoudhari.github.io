@@ -1,0 +1,25 @@
+# Road Trip Mode (Konami code). PLACEHOLDER stops from the design mockup: correct before launch.
+# base: true marks a home base.
+- place: Rochester, New York
+  when: "2007"
+  note: Home base one. Lake-effect snow and a master's degree.
+  base: true
+- place: Niagara Falls
+  when: 90 min
+  note: The first drive, taken within a week of landing, in the wrong jacket.
+- place: Boston → New York City
+  when: "2008"
+  note: I-90 east is still the road I picture when I say "road trip".
+- place: Los Alamos, New Mexico
+  when: "2009"
+  note: Home base two. A lab on a mesa, 7,300 feet, and the clearest night sky I've stood under.
+  base: true
+- place: Santa Fe & the high desert
+  when: weekends
+  note: Green chile on everything, which I maintain is correct.
+- place: Grand Canyon
+  when: "2010"
+  note: Arrived at the rim at the wrong hour and stayed until it was the right one.
+- place: Las Vegas → Los Angeles
+  when: "2011"
+  note: The last long one before the flight home.

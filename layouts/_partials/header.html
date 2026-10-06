@@ -1,8 +1,0 @@
-<header class="site-header">
-  <a class="site-name" href="{{ "/" | relURL }}">{{ site.Title }}</a>
-  <nav>
-    {{ range site.Menus.main }}
-      <a href="{{ .URL }}"{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) (eq $.Section (strings.TrimPrefix "/" .PageRef)) }} aria-current="page"{{ end }}>{{ .Name }}</a>
-    {{ end }}
-  </nav>
-</header>

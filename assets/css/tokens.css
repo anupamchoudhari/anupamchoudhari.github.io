@@ -1,0 +1,65 @@
+/* tokens.css - the only file you edit to re-skin the site.
+   Every color, face and size the site uses is declared here. */
+/* Layout: a fixed left index rail (the pegboard) beside one 66ch reading column; everything
+   derives from the tokens below, so re-skinning the site means editing this block only. */
+:root{
+  /* color */
+  --paper:#f3f4f6;
+  --card:#ffffff;
+  --ink:#16181d;
+  --ink-soft:#575d6b;
+  --rule:#d8dbe2;
+  --accent:#1f49a0;
+  --accent-soft:#e7ecf8;
+  --ember:#9c5522;
+
+  /* type */
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --body:"Atkinson Hyperlegible",-apple-system,"Segoe UI",Helvetica,sans-serif;
+  --utility:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+
+  /* scale */
+  --step--1:0.82rem;
+  --step-0:1.02rem;
+  --step-1:1.3rem;
+  --step-2:1.7rem;
+  --step-3:clamp(2.1rem,5vw,3.1rem);
+  --measure:66ch;
+  --radius:3px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#14161b;
+    --card:#1b1e25;
+    --ink:#e9eaee;
+    --ink-soft:#9ba2b1;
+    --rule:#2d323c;
+    --accent:#8fb0f2;
+    --accent-soft:#1f2735;
+    --ember:#d79a63;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14161b;
+  --card:#1b1e25;
+  --ink:#e9eaee;
+  --ink-soft:#9ba2b1;
+  --rule:#2d323c;
+  --accent:#8fb0f2;
+  --accent-soft:#1f2735;
+  --ember:#d79a63;
+  color-scheme:dark;
+}
+/* Road Trip Mode: the same tokens, a dusk palette. Proof the site re-skins without touching markup. */
+:root[data-mode="roadtrip"]{
+  --paper:#1d1a22;
+  --card:#262231;
+  --ink:#f6ead9;
+  --ink-soft:#c3ab97;
+  --rule:#413a4e;
+  --accent:#f0a24a;
+  --accent-soft:#33293a;
+  --ember:#e8703f;
+  color-scheme:dark;
+}
