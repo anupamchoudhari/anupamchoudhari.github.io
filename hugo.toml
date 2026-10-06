@@ -1,5 +1,5 @@
 # Site config. Content lives in content/<section>/<slug>.md
-baseURL = "https://anupamchoudhari.com/"
+baseURL = "https://www.anupamchoudhari.com/"
 locale = "en"
 title = "Anupam Choudhari"
 enableRobotsTXT = true

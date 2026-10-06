@@ -29,7 +29,10 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v5
       - name: Build
-        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+        # Pages reports http:// until the HTTPS certificate is issued; always link over https.
+        run: |
+          BASE_URL="${{ steps.pages.outputs.base_url }}"
+          hugo --gc --minify --baseURL "${BASE_URL/http:/https:}/"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
