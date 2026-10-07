@@ -1,16 +1,18 @@
-# Currently Brewing log. One entry per roaster; the table shows them in this order.
-- roaster: Fraction 9
-  origin: ""
-  process: ""
-  notes: ""
+# Currently Brewing log. One entry per roaster, shown in this order.
+# A roaster appears once `coffee` is filled in; `notes` and `reorder` are optional.
+- roaster: GB Roasters
+  coffee: Excelsa, Bella Bean Farm. Sequential anaerobic natural, light roast, ~1,200 m, 2026 crop
+  notes: Fruity, caramel, tropical. 8.8 on a pourover (300 ml, 200°F, 6 pours, metal filter)
+  reorder: "Yes"
+- roaster: Genetics Coffee Roasters
+  coffee: Mohabbat. Medium roast, single origin
+  notes: Dried fig, prunes, dried berries. Silky
   reorder: ""
 - roaster: Savorworks
-  origin: ""
-  process: ""
+  coffee: Professor, Heisenberg, Ironborn, Assassin's Brotherhood, Fruits Bomb
   notes: ""
   reorder: ""
-- roaster: Half Light
-  origin: ""
-  process: ""
+- roaster: Corridor Seven, Nagpur
+  coffee: Peach Fermentation, Watermelon Fermentation
   notes: ""
   reorder: ""

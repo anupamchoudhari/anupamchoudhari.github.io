@@ -6,8 +6,7 @@ enableRobotsTXT = true
 disableKinds = []
 
 [params]
-  description = "I build AI products, and I keep notes on how the decisions really get made."
-  tagline = "Product builder. Framework hoarder. Personally devoted parent (my daughter disputes this)."
+  description = "Making AI products dependable: prototypes, the frameworks behind them, books worth arguing with, and coffee."
   author = "Anupam Choudhari"
 
 # Every post lives at a flat address: anupamchoudhari.com/<slug>

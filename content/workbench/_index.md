@@ -1,10 +1,9 @@
 ---
 title: "The Workbench"
-num: "01"
-subtitle: "Prototypes"
-description: "Prototypes, told with the thinking that produced them. Four beats every time: the itch, what I built, what happened, what I'd do differently. Everything else only when it earns its place."
-
+subtitle: "prototypes"
+description: "Prototypes: the itch, how it works, and a demo to click where there is one."
 ---
-<p class="eyebrow">Verdicts, not outcomes</p>
 
-Every prototype here ends with one of three words: **Shipped**, **Parked**, or **Killed with dignity**. The third one is the reason the first one is believable.
+Prototypes, kept short and visual: the itch, a diagram of how it works, and a demo to click where there is one.
+
+<p class="muted">Each one carries its stage: concept, prototype, or in use.</p>

@@ -1,1 +1,2 @@
-{{ $l := add .Level 1 | math.Min 6 }}<h{{ $l }} id="{{ .Anchor }}">{{ .Text }}</h{{ $l }}>
+{{/* Headings render at their written level; a post title is the only h1. */}}
+<h{{ .Level }} id="{{ .Anchor }}">{{ .Text }}</h{{ .Level }}>

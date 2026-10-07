@@ -7,24 +7,40 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
   <link rel="canonical" href="{{ .Permalink }}">
   {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">{{ end }}
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400&display=swap">
   {{/* tokens.css is the only file to edit to re-skin the site; site.css reads it. */}}
   {{ $css := slice (resources.Get "css/tokens.css") (resources.Get "css/site.css") | resources.Concat "css/style.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
   {{ partial "opengraph.html" . }}
 </head>
 <body>
+{{/* Two layouts. Posts, prototypes and About read in one centred column with no sidebar;
+     home, section and theme pages keep the section list on the left. */}}
+{{ if .IsPage }}
+<div class="reading">
+  <div class="topline">
+    <a class="me" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    {{ with .CurrentSection }}{{ if not .IsHome }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}{{ end }}
+  </div>
+  {{ block "main" . }}{{ end }}
+</div>
+{{ else }}
 <div class="shell">
-  {{ partial "rail.html" . }}
-  <main class="main">
+  <aside class="side">
+    <a class="me" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    <ul>
+      {{ range site.Menus.main }}{{ with .Page }}
+      {{ $current := or (eq . $) (and .IsSection (eq $.Section .Section) (not $.IsHome)) }}
+      <li><a class="sec" href="{{ .RelPermalink }}"{{ if $current }} aria-current="page"{{ end }}>{{ .Title }}{{ with .Params.subtitle }}<small>{{ . }}</small>{{ end }}</a></li>
+      {{ end }}{{ end }}
+    </ul>
+  </aside>
+  <main class="index">
     {{ block "main" . }}{{ end }}
-    <footer class="footer">
-      <span>Made in Bangalore, by way of Thane, Rochester and Los Alamos.</span>
-      <a href="{{ "index.xml" | relURL }}">RSS</a>
-      <span class="hint">↑ ↑ ↓ ↓ ← → ← → B A</span>
-    </footer>
   </main>
 </div>
+{{ end }}
+<div class="footer"><p><span>Made in Bangalore, by way of Mumbai, Rochester and Los Alamos.</span><a href="{{ "index.xml" | relURL }}">RSS</a></p></div>
 {{ partial "roadtrip.html" . }}
 {{ $js := resources.Get "js/easter-eggs.js" | minify | fingerprint }}
 <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>

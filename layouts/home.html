@@ -1,36 +1,14 @@
 {{ define "main" }}
-<section class="view">
-  <div class="hero">
-    {{ with .Params.eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
-    <h1>{{ .Params.headline | markdownify }}</h1>
-    {{ with .Params.lede }}<p class="lede">{{ . }}</p>{{ end }}
-    {{ with .Params.sub }}<p class="sub">{{ . }}</p>{{ end }}
-  </div>
-
-  {{ with .Params.credibility }}
-  <div class="strip">{{ range . }}<span>{{ . | markdownify }}</span>{{ end }}</div>
-  {{ end }}
-
-  <a class="cta" href="{{ "workbench/" | relURL }}">Start with the Workbench →</a>
-
-  {{/* Flagship pieces are listed by path in content/_index.md; drafts and
-       missing posts are skipped, and the block hides until one is live. */}}
-  {{ $flagship := slice }}
-  {{ range .Params.flagship }}{{ with site.GetPage . }}{{ $flagship = $flagship | append . }}{{ end }}{{ end }}
-  {{ with $flagship }}
-  <div>
-    <p class="eyebrow">Three pieces to judge me on</p>
-    <div class="flagship">{{ range . }}{{ partial "card.html" . }}{{ end }}</div>
-  </div>
-  {{ end }}
-
-  {{ with first 5 (where site.RegularPages "Section" "ne" "") }}
-  <div>
-    <p class="eyebrow">Recently</p>
-    <div class="latest">
-      {{ range . }}{{ partial "row.html" (dict "page" . "where" (.CurrentSection.Title | strings.TrimPrefix "The ")) }}{{ end }}
-    </div>
-  </div>
-  {{ end }}
-</section>
+<div>
+  <h1 class="stream" aria-label="Making AI stick">Making AI <span class="word" id="word">stick</span><span class="caret" aria-hidden="true"></span></h1>
+  <p class="sampler" id="sampler" aria-hidden="true"><span class="pick">stick 0.41</span><span class="alt">work 0.27</span><span class="alt">ship 0.19</span></p>
+</div>
+{{ with .Params.thesis }}<p class="thesis">{{ . }}</p>{{ end }}
+{{ with .Params.scope }}<p class="muted">{{ . }}</p>{{ end }}
+{{ with first 8 (where site.RegularPages "Section" "ne" "") }}
+<h2>Lately</h2>
+{{ partial "list.html" . }}
+{{ end }}
+{{ $js := resources.Get "js/stream-headline.js" | minify | fingerprint }}
+<script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
 {{ end }}

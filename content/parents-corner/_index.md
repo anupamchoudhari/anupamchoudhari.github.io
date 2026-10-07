@@ -1,8 +1,9 @@
 ---
 title: "Parents Corner"
-num: "05"
-subtitle: "Things I built for my kid"
-description: "Things I built for my kid, written for other parents who might want them. What it is, what age it suits, how to use it, and her rating out of five, which is usually lower than mine."
-
+subtitle: "parenting in the AI era"
+description: "Parenting in the AI era. Tools, games and small experiments built for one kid, written up for other parents."
 ---
-<p class="mono">No names, no photos. She gets to decide her own internet, later.</p>
+
+Parenting in the AI era is going to be different. Kids now grow up with a machine that answers back, and nobody has a playbook for that yet.
+
+<p class="muted">Tools, games and small experiments built for one kid, written up for other parents: what it is, what age it suits, and the kid's rating out of five, which is usually lower than the builder's.</p>

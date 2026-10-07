@@ -1,19 +1,10 @@
 {{ define "main" }}
-<section class="view">
-  {{ partial "crumb.html" . }}
-  <div class="page-head">
-    {{ with .Params.num }}<p class="eyebrow">Section {{ . }}</p>{{ end }}
-    <h2>{{ .Title }}</h2>
-    {{ with .Description }}<p class="sub">{{ . }}</p>{{ end }}
-  </div>
-  {{ block "section-top" . }}{{ end }}
-  {{ with .Pages }}
-  <div class="latest">
-    {{ range . }}{{ partial "row.html" (dict "page" . "where" (.Params.kind | default "" | humanize)) }}{{ end }}
-  </div>
-  {{ else }}
-  <p class="mono">Nothing here yet. It's brewing.</p>
-  {{ end }}
-  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
-</section>
+<h1>{{ .Title }}</h1>
+{{ with .Content }}<div class="intro">{{ . }}</div>{{ end }}
+{{ block "section-top" . }}{{ end }}
+{{ with .Pages }}
+{{ partial "list.html" . }}
+{{ else }}
+<p class="muted">{{ .Params.empty | default "Nothing here yet." }}</p>
+{{ end }}
 {{ end }}

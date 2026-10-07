@@ -1,34 +1,22 @@
 {{ define "main" }}
-<section class="view">
-  {{ partial "crumb.html" . }}
-  <div class="page-head">
-    {{ partial "status-tag.html" . }}
-    <h2>{{ .Title }}</h2>
-    {{ if ne .Section "" }}
-    {{ $meta := slice (printf "anupamchoudhari.com%s" (.RelPermalink | strings.TrimSuffix "/")) }}
-    {{ with .Params.byline }}{{ $meta = $meta | append . }}{{ end }}
-    {{ with .Params.meta }}{{ $meta = $meta | append . }}{{ end }}
-    {{ with .GetTerms "themes" }}{{ $names := slice }}{{ range . }}{{ $names = $names | append .LinkTitle }}{{ end }}{{ $meta = $meta | append (printf "themes: %s" (delimit $names ", ")) }}{{ end }}
-    <p class="sub mono">{{ delimit $meta " · " }}</p>
-    {{ else }}
-    {{ with .Description }}<p class="sub">{{ . }}</p>{{ end }}
-    {{ end }}
-  </div>
-
-  {{/* Workbench posts can carry their four beats in front matter (see archetypes/workbench.md). */}}
-  {{ with .Params.beats }}
-  <ol class="beats">
-    {{ range . }}<li><div><b>{{ .name }}</b><span>{{ .text | markdownify }}</span></div></li>{{ end }}
-  </ol>
+<article class="post">
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.dek | default .Description }}{{ if $.Section }}<p class="dek">{{ . }}</p>{{ end }}{{ end }}
+  {{ if .Section }}
+  <p class="meta">
+    <span>{{ .Date.Format "January 2006" }}</span>
+    {{ with .Params.byline }}<span>{{ . }}</span>{{ end }}
+    {{ with .Params.stage }}<span>{{ . | humanize }}</span>{{ end }}
+    <span>{{ .ReadingTime }} minute read</span>
+  </p>
   {{ end }}
-
-  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
-
-  {{ with .Params.bet }}
-  <div class="callout">
-    <p class="eyebrow">The bet</p>
-    <p>{{ . | markdownify }}</p>
+  {{ with .Params.demo }}<p class="try"><a href="{{ . }}">Try the prototype →</a></p>{{ end }}
+  <div class="body">{{ .Content }}</div>
+  {{ if .Section }}
+  <div class="endnote">
+    {{ with .CurrentSection }}<a href="{{ .RelPermalink }}">← More from {{ .Title }}</a>{{ end }}
+    {{ with .NextInSection }}<a href="{{ .RelPermalink }}">Next: {{ .Title }} →</a>{{ end }}
   </div>
   {{ end }}
-</section>
+</article>
 {{ end }}

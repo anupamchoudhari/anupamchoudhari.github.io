@@ -1,8 +1,9 @@
 ---
 title: "Three Takeaways"
-num: "03"
-subtitle: "Books and podcasts"
-description: "Three takeaways per book, one place I disagree, one thing I tried at work. Episodes get the same treatment, with the guest as the headline and the show as the byline."
-
+subtitle: "books and podcasts"
+description: "Books and podcast episodes, three takeaways each, plus one disagreement."
 ---
-<p class="mono">On rotation: Lenny's Podcast · Founders · The Diary of a CEO · 20VC</p>
+
+Books and podcast episodes, three takeaways each, plus one disagreement.
+
+<p class="muted">On rotation: Lenny's Podcast, Founders, The Diary of a CEO, 20VC.</p>

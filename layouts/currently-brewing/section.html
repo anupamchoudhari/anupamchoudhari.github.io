@@ -1,33 +1,22 @@
 {{ define "main" }}
-<section class="view">
-  {{ partial "crumb.html" . }}
-  <div class="page-head">
-    <p class="eyebrow">Section {{ .Params.num }}</p>
-    <h2>{{ .Title }}</h2>
-    {{ with .Description }}<p class="sub">{{ . }}</p>{{ end }}
-  </div>
-  {{ with .Params.this_month }}{{ if .cup }}
-  <div class="brew-now">
-    <p class="eyebrow">This month I'm into</p>
-    <p class="cup">{{ .cup }}</p>
-    {{ with .notes }}<p class="mono">{{ . }}</p>{{ end }}
-    <button class="sugar" id="sugar" type="button">Milk and sugar?</button>
-    <p class="sugar-reply" id="sugar-reply" role="status"></p>
-  </div>
-  {{ end }}{{ end }}
-  {{/* The log lives in data/roasters.yaml. A roaster shows once its notes are filled in. */}}
-  {{ with where hugo.Data.roasters "notes" "ne" "" }}
-  <div class="scroll-x">
-    <table class="roasters">
-      <thead><tr><th>Roaster</th><th>Origin</th><th>Process</th><th>Notes</th><th class="score">Reorder</th></tr></thead>
-      <tbody>
-        {{ range . }}
-        <tr><td>{{ .roaster }}</td><td>{{ .origin }}</td><td>{{ .process }}</td><td>{{ .notes }}</td><td class="score">{{ .reorder }}</td></tr>
-        {{ end }}
-      </tbody>
-    </table>
-  </div>
-  {{ end }}
-  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
-</section>
+<h1>{{ .Title }}</h1>
+{{ with .Content }}<div class="intro">{{ . }}</div>{{ end }}
+{{ with .Params.this_month }}<div class="intro"><p>This month: <em>{{ . }}</em></p></div>{{ end }}
+<div>
+  <button class="sugar" id="sugar" type="button">Milk and sugar?</button>
+  <p class="sugar-reply" id="sugar-reply" role="status"></p>
+</div>
+{{/* The log lives in data/roasters.yaml. A roaster shows once its coffee is filled in. */}}
+{{ with where hugo.Data.roasters "coffee" "ne" "" }}
+<div class="wide">
+  <table class="roasters">
+    <thead><tr><th>Roaster</th><th>Coffee</th><th>Notes</th><th>Reorder?</th></tr></thead>
+    <tbody>
+      {{ range . }}<tr><td>{{ .roaster }}</td><td>{{ .coffee }}</td><td>{{ .notes }}</td><td>{{ .reorder }}</td></tr>
+      {{ end }}
+    </tbody>
+  </table>
+</div>
+{{ end }}
+{{ with .Params.photo }}<img src="{{ . | relURL }}" alt="{{ $.Params.photo_alt }}" loading="lazy" style="max-width:100%;height:auto;border-radius:3px">{{ end }}
 {{ end }}

@@ -19,11 +19,11 @@ Each command starts the post from that section's default shape (`archetypes/`). 
 - **Section:** the folder a post sits in. It drives the breadcrumb. Moving a post to another folder never changes its link.
 - **Drafts:** `draft: true` keeps a post off the live site. Delete the line to publish.
 - **Themes:** `themes: [ai-that-ships]` groups posts across sections at `/themes/`.
-- **Workbench beats:** a prototype can put its four beats in front matter (`beats:`) to get the numbered layout, or just use `##` headings in the body. Both work.
-- **Homepage:** the hero, credibility strip and the three flagship pieces live in `content/_index.md`. A flagship piece shows once it's published.
-- **Currently Brewing:** the roaster log is `data/roasters.yaml`; a roaster appears once its notes are filled in. "This month" is in `content/currently-brewing/_index.md`.
+- **Workbench:** short and visual. Front matter `stage: concept | prototype | in-use` and `demo:` (shows a "Try the prototype" link); `##` headings in the body.
+- **Lists:** `blurb:` is the one line under a post's title in lists; `description:` is the italic line under the title on the post itself.
+- **Homepage:** "Making AI ___" streams in from `assets/js/stream-headline.js` (edit `WORDS` there); the thesis and scope lines live in `content/_index.md`. "Lately" lists the newest posts.
+- **Currently Brewing:** the roaster log is `data/roasters.yaml`; a roaster appears once its `coffee` is filled in. "This month" and the shelf photo are in `content/currently-brewing/_index.md`.
 - **Road Trip Mode** (the Konami code) reads its stops from `data/roadtrip.yaml`.
-- **About and Currently Brewing drafts** wait in `drafts/`; see `drafts/README.md`.
 
 ## Preview locally
 
@@ -48,7 +48,7 @@ Put a self-contained demo at `static/<post-slug>/demo/index.html`; it is served 
 | Path | What |
 | --- | --- |
 | `content/` | All writing, one folder per section |
-| `layouts/` | HTML templates (header, breadcrumb, lists, 404) |
+| `layouts/` | HTML templates: `baseof.html` picks the reading layout (posts, About) or the index layout with the section list (home, sections) |
 | `assets/css/tokens.css` | Every color, font and size. Edit only this to re-skin the site |
 | `assets/css/site.css` | Layout and components; reads the tokens |
 | `assets/js/easter-eggs.js` | Konami code, milk-and-sugar button, console note |

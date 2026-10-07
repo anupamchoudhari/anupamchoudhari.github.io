@@ -1,0 +1,6 @@
+{{/* A dated list of posts. Each line: month, title, one-line blurb, and the stage for Workbench posts. */}}
+<ul class="list">
+  {{ range . }}
+  <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2006" }}</time><span class="t"><a href="{{ .RelPermalink }}">{{ .Title }}</a></span><span class="d">{{ with .Params.blurb }}{{ . }}{{ else }}{{ .Description }}{{ end }}{{ with .Params.stage }} <i>{{ . | humanize }}.</i>{{ end }}</span></li>
+  {{ end }}
+</ul>

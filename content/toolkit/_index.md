@@ -1,8 +1,7 @@
 ---
 title: "The Toolkit"
-num: "02"
-subtitle: "Frameworks and mental models"
-description: "Frameworks and mental models, each with the same three parts: what it is, when to reach for it, and when it will make you worse. One worked example, from a real decision."
-
+subtitle: "frameworks and mental models"
+description: "Frameworks and mental models that actually get used, with when each one helps and when it quietly makes things worse."
 ---
 
+Frameworks and mental models that actually get used, with when each one helps and when it quietly makes things worse.
