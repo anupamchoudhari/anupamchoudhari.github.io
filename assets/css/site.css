@@ -121,3 +121,4 @@ article.post{display:flex;flex-direction:column;gap:0}
 .intro img{max-width:100%;height:auto;display:block;border-radius:3px}
 .footer p{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem 1.5rem}
 .footer a{color:var(--ink-soft)}
+.index .body h2{font-style:normal;font-weight:500;color:var(--ink);font-size:1.5rem}

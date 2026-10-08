@@ -1,6 +1,6 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
-{{ with .Content }}<div class="intro">{{ . }}</div>{{ end }}
+{{ with .Params.intro }}<div class="intro"><p>{{ . }}</p></div>{{ end }}
 {{ with .Params.this_month }}<div class="intro"><p>This month: <em>{{ . }}</em></p></div>{{ end }}
 <div>
   <button class="sugar" id="sugar" type="button">Milk and sugar?</button>
@@ -19,4 +19,5 @@
 </div>
 {{ end }}
 {{ with .Params.photo }}<img src="{{ . | relURL }}" alt="{{ $.Params.photo_alt }}" loading="lazy" style="max-width:100%;height:auto;border-radius:3px">{{ end }}
+{{ with .Content }}<div class="body" style="margin-top:0">{{ . }}</div>{{ end }}
 {{ end }}
