@@ -4,54 +4,48 @@ slug: dhm-test
 themes: [deciding-what-to-build]
 kind: framework
 date: 2026-10-07
-description: "Gibson Biddle's one-line product strategy test, and the adjustment it needs for AI features."
-blurb: "Gibson Biddle's one-line definition of product strategy, stress-tested for AI."
+description: "A one-sentence test for whether a feature is strategy or just activity. It holds up almost everywhere, except on an AI roadmap, where nearly every line fails the same question."
+blurb: "A one-sentence test for strategy, and the AI roadmap that fails it."
 ---
 
-**Delight customers, in hard-to-copy, margin-enhancing ways.** Gibson Biddle's one-line definition of product strategy, from his years at Netflix. Three conditions, and a feature has to clear all three to be strategy rather than activity.
+Gibson Biddle ran product at Netflix, and his definition of product strategy fits in one sentence: **delight customers, in hard-to-copy, margin-enhancing ways.** A feature has to do all three to count as strategy. Doing one or two makes it activity, which is still sometimes worth doing, as long as nobody mistakes it for the other thing.
 
-The best introduction is Biddle himself, on [Lenny's Podcast](https://www.lennysnewsletter.com/p/gibson-biddle-on-the-the-dhm-product), walking through DHM with Netflix case studies.
+Netflix's recommendations are the textbook case, and the one he uses himself. They delight, because people find something to watch instead of scrolling for twenty minutes. They are hard to copy, because they run on the viewing history of a very large number of members, which a new rival simply does not have. And they help margin, because a service that can steer people toward lesser-known titles gets more out of every title it pays for. The best walkthrough is his own, on [Lenny's Podcast](https://www.lennysnewsletter.com/p/gibson-biddle-on-the-the-dhm-product).
 
-It is the framework I reach for most, mostly because it is short enough to use in the room while the argument is still happening.
+## Using it
 
-## What it is
+Take a feature on the roadmap and ask three questions, in this order.
 
-Take any candidate on the roadmap and ask three questions in order.
+**Does it delight?** Useful is not enough. The bar is whether customers would complain if it disappeared. A surprising number of roadmap items fail here and get built anyway, usually because someone promised them to someone.
 
-**Does it delight?** Not "is it useful". Delight means a customer would be annoyed if you took it away. Most roadmap items fail here and survive anyway, because they are somebody's commitment rather than somebody's need.
+**Is it hard to copy?** If a competent competitor can ship the same thing in a quarter, it buys a quarter of advantage and nothing more. That can still be worth it. A checkout redesign that lifts conversion this year is a good investment even though everyone else will have one by next year. It is just not strategy, and planning as though it were leads to surprise when the advantage evaporates. For the long answer to what makes something genuinely hard to copy, see [7 Powers](/7-powers/).
 
-**Is it hard to copy?** If a competent competitor can ship the same thing in a quarter, you have bought yourself a quarter. Sometimes a quarter is worth buying. Call it that, though, instead of calling it strategy. Hamilton Helmer's [7 Powers](/7-powers/) is the long answer to what makes something hard to copy.
+**Does it help margin?** There are three ways in: customers pay more, each customer costs less to serve, or the next feature becomes cheaper to build. A feature that delights and can't be copied but costs a fortune to run is a hobby.
 
-**Does it enhance margin?** Either it lets you charge more, or it costs less to serve the same customer, or it makes the next feature cheaper to build. Delightful and hard to copy and free is a hobby.
+The order matters more than it looks. In most planning meetings margin gets discussed first, because it is the question with a spreadsheet attached. Asking about delight first means the harder conversation, whether anyone actually wants this, happens before the numbers make the decision feel settled.
 
-The test is useful mainly because it is ordered. Teams tend to argue about the third question first, since margin is the one with numbers attached, and numbers feel like rigour. Running it in order forces the uncomfortable conversation to the front.
+## Where it helps, and where it doesn't
 
-## When to reach for it
+It earns its keep in a roadmap review where every item has a justification and nothing has a priority. Ask the three questions out loud, line by line, and the weak items tend to stop defending themselves. It also helps when choosing between two features that both look sensible: they rarely tie on all three, and the gap usually turns out to be in "hard to copy", which nobody had thought about. And because it is one sentence, it travels well in a pitch to people who have never heard of it.
 
-- **A roadmap review where everything is justified and nothing is prioritized.** Ask the three questions out loud on each line. Half the list stops defending itself.
-- **Deciding between two features that both look sensible.** They are rarely equal across all three, and the gap is usually in "hard to copy", which nobody has thought about.
-- **Pitching upward.** It compresses to one sentence, and executives who have never heard of Biddle follow it immediately.
+It is the wrong tool in a few places:
 
-## When not to reach for it
-
-- **Anything below a quarter in scope.** DHM is for bets, not for sprint planning. Running it on a bug is theatre.
-- **Platform and infrastructure work.** A migration delights nobody and is nobody's moat. It still has to happen. Judge that work on the cost of not doing it, which is a different question entirely.
-- **Zero-to-one, before you have a customer.** DHM assumes you know who you are delighting. Early on that is the thing in dispute, so the test gives confident answers to a question you have not earned yet.
-- **Compliance and trust work.** "Delight" is the wrong frame for something whose success condition is that nobody notices it.
+- **Small work.** A bug fix or a sprint-sized improvement doesn't need a strategy test.
+- **Platform and infrastructure.** A database migration delights nobody and is nobody's moat, and it still has to happen. The honest question there is what it costs *not* to do it.
+- **Before there are customers.** The test assumes you know whom you are delighting. Early on, that is exactly what is unknown, so the answers come out confident and wrong.
+- **Compliance and trust work**, where success means nobody notices anything.
 
 ## Where it breaks for AI features
 
-This is the part I care about most, and it is the part Biddle was not writing for.
+Almost nothing in an AI product is hard to copy right now. Take a feature that summarises a customer's support tickets. It may have taken a team two months to get right, but it can be described in a paragraph, and the next model release makes that paragraph easier to build. Run DHM honestly across an AI roadmap and the middle question fails on nearly every line. Taken literally, that says build nothing, which can't be right.
 
-Right now, almost nothing in an AI product is hard to copy. A feature that took a team two months to get right can be described in a paragraph, and the next model release makes that paragraph easier to implement. Run DHM honestly across an AI roadmap and the middle question fails on nearly every line, which tells you to build almost nothing. That is obviously the wrong conclusion.
+Two adjustments keep the test useful.
 
-Two adjustments keep it useful.
+**Score what the feature leaves behind, not the feature.** The summariser is copyable. What builds up while it runs is not. To know whether the summaries were any good, the team had to write test cases, argue about edge cases, and agree on what a good summary of an angry escalation looks like. That collection of examples, usually called an evaluation set, took months of judgement calls specific to this customer base, and a competitor starting today has none of it. The same goes for the usage data: which summaries agents edited, which they trusted, which they ignored.
 
-**Ask what gets harder to copy over time, not what is hard to copy today.** The feature is copyable. The evaluation set you built to know whether it works is not, because it encodes a year of arguments about what "good" means in your domain. The feature is copyable; the workflow data it generates while being used is not. When you apply DHM to an AI feature, score the *by-product*, not the feature.
+**Ask how far the feature sits from the model.** Some features are thin layers over what the model already does: a chat window, a clever prompt, a summary. Each model release does more of that work for free, so the advantage shrinks on a schedule someone else controls. Other features live in the customer's own world: connections to their tools, their data, their approval steps, their definition of a correct answer. A better model makes those more valuable, because there is more it can do inside them.
 
-**Treat distance from the model as the real axis.** Anything the next model release does for free is not a moat, it is a countdown. Anything that lives in your customer's workflow, their data, their approval chains, their definition of correct, survives the next release and gets better because of it.
-
-So the question worth asking is: *when the model underneath this gets twice as good, does this feature become unnecessary or does it become more valuable?* Features where the answer is "more valuable" are the only ones worth calling strategy. The rest are worth buying a quarter with, as long as everyone in the room agrees that is what we are doing.
+That boils down to one question worth asking of every AI feature: *when the model underneath gets twice as good, does this become unnecessary, or more valuable?* The ones that become more valuable are strategy. The rest can still be worth building for the quarter they buy, as long as the plan says so.
 
 <!-- DHM for AI features. Drop-in figure; colours and fonts come from the site's tokens.css. -->
 <style>
