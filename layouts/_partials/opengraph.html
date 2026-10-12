@@ -1,4 +1,24 @@
+{{/* Share image: front matter `image` (a file in the page bundle, or a path under static/) wins;
+     otherwise the site default, static/images/og-default.png (1200x630). */}}
+{{ $desc := .Description | default site.Params.description }}
+{{ $img := "" }}
+{{ $alt := .Params.imageAlt }}
+{{ with .Params.image }}
+  {{ with $.Resources.Get . }}{{ $img = .Permalink }}{{ else }}{{ $img = absURL . }}{{ end }}
+{{ else }}
+  {{ $img = absURL site.Params.ogImage }}
+  {{ $alt = site.Params.ogImageAlt }}
+{{ end }}
+<meta property="og:site_name" content="{{ site.Title }}">
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:image" content="{{ $img }}">
+{{ if not .Params.image }}<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">{{ end }}
+{{ with $alt }}<meta property="og:image:alt" content="{{ . }}">{{ end }}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $img }}">
