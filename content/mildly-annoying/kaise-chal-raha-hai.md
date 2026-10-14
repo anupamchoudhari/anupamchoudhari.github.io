@@ -34,6 +34,7 @@ Nobody asked what they were doing there, or how dangerous they were on a footpat
 
 <figure class="art">
   <img src="/images/footpath-new-footpath.png" alt="Two panels. A grinning driver in sunglasses spots a new footpath: A new footpath!! Then, seeing the steel rods, he swerves away: Let me avoid it. Might puncture my tyre." width="1200" height="640" loading="lazy">
+  <figcaption>Salman's excitement on seeing a brand-new footpath is short-lived.</figcaption>
 </figure>
 
 Then the street vendors stepped in. The same vendors who already occupy half the footpath started pushing empty plastic bottles onto the rods. 👏🫡
