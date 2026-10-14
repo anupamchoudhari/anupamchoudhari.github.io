@@ -176,5 +176,3 @@ Marquet is careful to say that handing over control only works alongside two oth
 ### If only one thing changes
 
 A keyman for footpaths. One named person for every kilometre, who walks it every week while it's being built and for years afterwards, and logs what they find somewhere the public can read. Put their phone number on a board at each end of the stretch, title it *Kaise chal raha hai?*, and borrow the line every office cab carries for the cars behind it: *In case of rash driving, call XXX.* For a footpath: *In case of a "bad trip", call XXX.* 🙂
-
-The railways have shown this works with Indian budgets and Indian weather. It's also the one change that would have caught all of it: the spikes on day one, the glowing trees on night one, the first crack before the first quarter was out. And the vendors could go back to their day jobs, instead of running quality control for free.
