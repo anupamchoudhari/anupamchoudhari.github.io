@@ -8,7 +8,7 @@ blurb: "A new footpath, three months, and a rulebook nobody walks."
 themes: []
 kind: complaint
 image: images/kaise-chal-raha-hai-cover.png
-imageAlt: "Truck-art board reading 'Kaise chal raha hai?' next to a new footpath with plastic bottles stuck on steel rods. Asked a new Bengaluru footpath. It's still thinking."
+imageAlt: "Truck-art board reading 'Kaise chal raha hai?' A man trips over a steel rod on a new footpath while looking back, thinking: I'm trippin'."
 ---
 
 <style>
@@ -19,7 +19,7 @@ imageAlt: "Truck-art board reading 'Kaise chal raha hai?' next to a new footpath
 </style>
 
 <figure class="art">
-  <img src="/images/kaise-chal-raha-hai-cover.png" alt="Truck-art board reading 'Kaise chal raha hai?' next to a new footpath with plastic bottles stuck on steel rods." width="1200" height="630">
+  <img src="/images/kaise-chal-raha-hai-cover.png" alt="Truck-art board reading Kaise chal raha hai? A man trips over a steel rod on a new footpath while looking back, thinking: I'm trippin'." width="1200" height="630">
 </figure>
 
 When the road outside started getting a new footpath, I was genuinely happy. Wide, level, new. The kind you see in a builder's brochure, right next to the swimming pool nobody will use.
@@ -33,7 +33,7 @@ Every 20 metres or so, a short steel rod started sticking out of the ground at a
 Nobody asked what they were doing there, or how dangerous they were on a footpath this crowded. Passers-by noticed, hopped over, a few tripped, dusted themselves off and moved on with their busy lives. This is Bangalore. Nobody has time to fall properly.
 
 <figure class="art">
-  <img src="/images/footpath-girna-padega.png" alt="A pedestrian looks at a row of steel rods capped with plastic bottles along a footpath and thinks: Saala, aaj phir girna padega." width="1200" height="680" loading="lazy">
+  <img src="/images/footpath-new-footpath.png" alt="Two panels. A grinning driver in sunglasses spots a new footpath: A new footpath!! Then, seeing the steel rods, he swerves away: Let me avoid it. Might puncture my tyre." width="1200" height="640" loading="lazy">
 </figure>
 
 Then the street vendors stepped in. The same vendors who already occupy half the footpath started pushing empty plastic bottles onto the rods. 👏🫡
@@ -42,7 +42,7 @@ On Indian roads there is no shortage of citizen contractors (also citizen traffi
 
 ## Month two: lights, for the trees
 
-The mystery solved itself two months in. The rods were anchors for light poles, which finally showed up. The lights came on about 15 days after that. (If a model took 75 days to return its first token, we'd call it broken. Here it's called phase two.)
+The mystery solved itself two months in. The rods were anchors for light poles, which finally showed up. The lights came on about 15 days after that. (If a model took 75 ms to return its first token, my boss would call it broken. Here, 75 days is called phase two.)
 
 The footpath was built around the existing trees, which is genuinely nice. The poles, though, came out taller than the lower branches, and nobody seems to have checked. So the lamp heads now sit inside the canopy. At night the street has a row of beautifully lit trees above a footpath that is still dark.
 
@@ -59,20 +59,20 @@ Concrete and cement tiles can easily last 30 years. Just not when the job is don
 
 ## Who writes the playbook?
 
-My first guess was that nobody does. That's wrong. The Indian Roads Congress, the body that writes road standards for the whole country, published **IRC:103, *Guidelines for Pedestrian Facilities***, in 2012. It is specific, and it reads like it was written by someone who walks.
+My first guess was that nobody does. That's wrong. The Indian Roads Congress, the body that writes road standards for the whole country, published [**IRC:103, *Guidelines for Pedestrian Facilities***](https://law.resource.org/pub/in/bis/irc/irc.gov.in.103.2012.pdf) in 2012. It is specific, and it reads like it was written by someone who walks.
 
 <div class="wide">
 
 | | IRC:103 (India) | Typical US practice | What Bengaluru got |
 |---|---|---|---|
-| Kerb height above the road | 150 mm at most ([ITDP summary of the code](https://www.itdp.in/wp-content/uploads/2014/04/11.-Footpath-Design_Handout.pdf)) | 6 inches, about 150 mm ([US federal standard drawing](https://highways.dot.gov/federal-lands/design/plan-prep/cfl/cfl-template-drawings-fp24/sp609-A.pdf)) | A new footpath in CV Raman Nagar came out between 3.5 and 5 feet high ([The News Minute](https://www.thenewsminute.com/karnataka/bbmp-builds-new-footpath-bengaluru-its-too-high-humans-165179)) |
-| Clear walking width | 1.8 m, so two wheelchairs can pass; 2.5 m in commercial areas ([ITDP](https://www.itdp.in/wp-content/uploads/2014/04/11.-Footpath-Design_Handout.pdf)) | 36 inches minimum for an accessible route under the ADA | Roughly half, once vendors and parked scooters take their share |
-| Clear height and obstructions | 2.2 m of headroom, with no poles, boxes, trees or signs in the walking zone ([Swarajya](https://swarajyamag.com/news-brief/delhi-footpaths-to-get-standardised-design-as-pwd-reviews-repair-norms)) | 80 inches of headroom under the ADA | Steel rods at ankle height, for two months |
-| Ramps at crossings | Kerb ramps for wheelchair users | No steeper than 1 in 12 ([US Access Board](https://www.access-board.gov/ada/guides/chapter-4-ramps-and-curb-ramps/)) | Sometimes. Then blocked with posts (see below) |
+| Kerb height above the road | 150 mm at most ([IRC:103](https://law.resource.org/pub/in/bis/irc/irc.gov.in.103.2012.pdf)) | 6 inches, about 150 mm ([US federal standard drawing](https://highways.dot.gov/federal-lands/design/plan-prep/cfl/cfl-template-drawings-fp24/sp609-A.pdf)) | A new footpath in CV Raman Nagar came out between 3.5 and 5 feet high ([The News Minute](https://www.thenewsminute.com/karnataka/bbmp-builds-new-footpath-bengaluru-its-too-high-humans-165179)) |
+| Clear walking width | 1.8 m, so two wheelchairs can pass; 2.5 m in commercial areas ([IRC:103](https://law.resource.org/pub/in/bis/irc/irc.gov.in.103.2012.pdf)) | 36 inches minimum for an accessible route under the ADA | Roughly half, once vendors and parked scooters take their share |
+| Clear height and obstructions | 2.2 m of headroom, with no poles, boxes, trees or signs in the walking zone ([IRC:103](https://law.resource.org/pub/in/bis/irc/irc.gov.in.103.2012.pdf)) | 80 inches of headroom under the ADA | Steel rods at ankle height, for two months |
+| Ramps at crossings | Kerb ramps no steeper than 1 in 12 ([IRC:103](https://law.resource.org/pub/in/bis/irc/irc.gov.in.103.2012.pdf)) | No steeper than 1 in 12 ([US Access Board](https://www.access-board.gov/ada/guides/chapter-4-ramps-and-curb-ramps/)) | Sometimes. Then blocked with posts (see below) |
 
 </div>
 
-Look at the first row again. India's guideline asks for the same kerb height as an American street. 150 mm is 5.9 inches. The problem isn't the standard. It's that nothing ties the standard to the thing that gets built.
+Look at the first and last rows again. India's guideline asks for the same kerb height as an American street (150 mm is 5.9 inches), and the same 1 in 12 ramp. The problem isn't the standard. It's that nothing ties the standard to the thing that gets built.
 
 When Citizen Matters asked, engineers in the city's own road department [said Bengaluru didn't have a footpath guideline](https://citizenmatters.in/?p=9492) at all. Different zones were [building to different designs](https://www.deccanherald.com/india/karnataka/bengaluru/while-bbmp-stays-busy-with-pothole-filling-footpaths-turn-into-deathtraps-948457.html), and the Deccan Herald found kerbs high enough that older people struggled to step up. Residents of the CV Raman Nagar stretch described getting onto theirs as climbing.
 
@@ -92,7 +92,7 @@ God forbid anyone builds a gentle slope for strollers. To a two-wheeler, a ramp 
 
 Bengaluru traffic police booked [12,032 cases of riding on footpaths](https://deccanherald.com/india/karnataka/bengaluru/bengaluru-crackdown-no-fix-for-footpath-riding-pedestrians-at-risk-4096222) in just the first five months of 2026. That's about 80 a day, and only the ones who got caught.
 
-So contractors put up bollards. Bollards stop strollers and wheelchairs too, so a gap gets left for wheelchair access, and riders [use that gap to ride straight through](https://fithindi.thequint.com/amp/story/news/india/bengaluru-woman-schooling-bikers-to-not-ride-on-the-footpath). Where the bollards are packed tight enough to work, they also [make the footpath hard to walk on](https://www.deccanherald.com/amp/story/india%2Fkarnataka%2Fbengaluru%2Fpavement-bollards-stump-pedestrians-2750814), and the riders go back onto the road, often against the traffic. The behaviour doesn't change. It just moves somewhere more dangerous.
+So contractors put up bollards. Bollards stop strollers and wheelchairs too, so a gap gets left for wheelchair access, and riders [use that gap to ride straight through](https://deccanchronicle.com/nation/current-affairs/290318/bengaluru-revs-up-to-take-on-footpath-riders.html). Where the bollards are packed tight enough to work, they also [make the footpath hard to walk on](https://www.deccanherald.com/amp/story/india%2Fkarnataka%2Fbengaluru%2Fpavement-bollards-stump-pedestrians-2750814), and the riders go back onto the road, often against the traffic. The behaviour doesn't change. It just moves somewhere more dangerous.
 
 ## What it costs, and what it costs not to
 
