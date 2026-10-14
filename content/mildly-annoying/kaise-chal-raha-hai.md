@@ -118,7 +118,7 @@ Indian Railways runs about [69,000 route km](https://dataful.in/datasets/1195/) 
 
 None of it is exotic. It's a person, a beat and a schedule (a human in the loop, literally walking the loop), applied to something far more complicated than a footpath.
 
-A footpath here, instead, belongs to everyone in slices. Since 2 September 2025, Bengaluru has been run by [five new city corporations under the Greater Bengaluru Authority](https://www.thenewsminute.com/karnataka/gba-to-replace-bbmp-from-sept-2-maheshwar-rao-will-be-new-commissioner), which replaced BBMP. The corporation's road engineers build the slab. BESCOM supplies the power for the lights. Someone else handles trees. Traffic police deal with riders and parking. Each slice has an owner. The walk itself doesn't.
+A footpath here, instead, belongs to everyone in slices. The city's road engineers build the slab. BESCOM supplies the power for the lights. Someone else handles trees. Traffic police deal with riders and parking. Each slice has an owner. The walk itself doesn't.
 
 When the city does act, it acts as a campaign. In July 2026 a ten-day "Safe Footpath" drive [cleared encroachments from 202.7 km of footpaths in its first three days](https://thesouthfirst.com/karnataka/safe-footpath-drive-clears-202-7-km-across-bengaluru/). That's real work. It's also a drive, and drives end.
 
