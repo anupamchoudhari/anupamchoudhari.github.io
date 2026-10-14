@@ -2,7 +2,7 @@
 title: "Kaise Chal Raha Hai?"
 slug: kaise-chal-raha-hai
 date: 2026-10-14
-draft: true
+draft: false
 description: "A brand-new footpath, three months, and a steady supply of things I would rather not have noticed. The rulebook exists, by the way. Nobody walks it."
 blurb: "A new footpath, three months, and a rulebook nobody walks."
 themes: []
