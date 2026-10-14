@@ -120,7 +120,7 @@ None of it is exotic. It's a person, a beat and a schedule (a human in the loop,
 
 A footpath here, instead, belongs to everyone in slices. The city's road engineers build the slab. BESCOM supplies the power for the lights. Someone else handles trees. Traffic police deal with riders and parking. Each slice has an owner. The walk itself doesn't.
 
-When the city does act, it acts as a campaign. In July 2026 a ten-day "Safe Footpath" drive [cleared encroachments from 202.7 km of footpaths in its first three days](https://thesouthfirst.com/karnataka/safe-footpath-drive-clears-202-7-km-across-bengaluru/). That's real work. It's also a drive, and drives end.
+When the city does act, it acts as a campaign. In July 2026 a ten-day "Safe Footpath" drive [cleared encroachments from 202.7 km of footpaths in its first three days](https://thesouthfirst.com/karnataka/safe-footpath-drive-clears-202-7-km-across-bengaluru/). That's real work. It's also a drive, and drives end. Some vendors were [back in the same spots within hours](https://www.thenewsminute.com/karnataka/major-footpath-clearance-drive-in-bengaluru-many-citizens-relieved-vendors-bear-the-brunt), and the minister has since had to order [fines and FIRs for repeat offenders](https://www.siasat.com/bengaluru-encroachment-repeat-offenders-to-face-fines-firs-3544510/).
 
 ### Asking for the records
 
