@@ -80,7 +80,7 @@ When Citizen Matters asked, engineers in the city's own road department [said Be
 
 Every driver here knows what a tall kerb does. You park close to the footpath, open the door, and the bottom of it scrapes the kerb. Or worse, the door opens fine, you get in, and it won't close. Your weight has pushed the car down an inch, and the bottom of the door now sits below the top of the kerb.
 
-In the US, I parked by rolling forward until the tyre touched the kerb. Every city, every state, same height, so you could park by feel. That is what a standard actually buys you. You stop having to think about it.
+In the US, I parked by rolling forward until the tyre touched the kerb. Every city, every state, same height, so you could park by feel, without ever worrying about the bottom scraping the kerb, because the cars are built for the same standard. That is what a standard actually buys you. You stop having to think about it.
 
 The ramps were just as consistent. The Americans with Disabilities Act (ADA) requires a sloped ramp at crossings, no steeper than 1 in 12, so a 6-inch kerb gets a ramp about 6 feet long. Wheelchairs, strollers, suitcases and skateboards all use the same one.
 
