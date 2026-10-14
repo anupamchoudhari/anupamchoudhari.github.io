@@ -26,7 +26,7 @@ When the road outside started getting a new footpath, I was genuinely happy. Wid
 
 The happiness was short-lived. Over the next three months I started noticing things I would have very happily gone on not noticing.
 
-## Month one: the spikes
+## Month one: spikes, for bad trips
 
 Every 20 metres or so, a short steel rod started sticking out of the ground at ankle height. Ribbed, rusty, the works. (Yes, TMT. Possibly the same Indus 555D you've seen advertised on the back of every other auto in Bangalore. Why a B2B steel brand markets itself to the guy stuck behind an auto at Silk Board is beyond me. But I digress.)
 
