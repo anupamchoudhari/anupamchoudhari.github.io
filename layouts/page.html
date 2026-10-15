@@ -9,6 +9,8 @@
     {{ with .Params.stage }}<span>{{ . | humanize }}</span>{{ end }}
     <span>{{ .ReadingTime }} minute read</span>
   </p>
+  {{ else if .Params.lastmod }}
+  <p class="meta"><span>Last updated {{ .Lastmod.Format "2 January 2006" }}</span></p>
   {{ end }}
   {{ with .Params.demo }}<p class="try"><a href="{{ . }}">Try the prototype →</a></p>{{ end }}
   <div class="body">{{ .Content }}</div>
