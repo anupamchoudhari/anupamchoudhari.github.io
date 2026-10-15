@@ -5,7 +5,7 @@ description: "The longer version: a timeline, operating principles, how it all s
 lastmod: 2026-10-15
 ---
 
-Anupam builds AI products. Fifteen-plus years of it, twice as a co-founder, and most of that time spent on the unglamorous half of the problem: taking AI from demos and proofs of concept to something enterprise-ready, and finding where it creates real value once it gets there. A demo only has to work once. An enterprise product has to work on the hundredth messy request, inside someone else's security review, for people who never asked for AI in the first place.
+Anupam builds AI products. Fifteen-plus years of it, twice as a co-founder, and most of that time spent on the unglamorous half of the problem: taking AI from demos and PoCs to something enterprise-ready, and finding where it creates real value once it gets there. A demo only has to work once. An enterprise product has to work on the hundredth messy request, inside someone else's security review, for people who never asked for AI in the first place.
 
 These days the work is agent harnesses. Not the model, not the prompt, the scaffolding around them that decides what the agent can see, what it is allowed to do, when it should stop and ask, and how anyone knows whether any of it worked. The interesting problems in AI products have moved from capability to permission, evaluation and trust, and almost none of that is visible in a demo.
 
