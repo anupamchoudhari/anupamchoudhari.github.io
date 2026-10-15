@@ -48,5 +48,6 @@
 {{ partial "roadtrip.html" . }}
 {{ $js := resources.Get "js/easter-eggs.js" | minify | fingerprint }}
 <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ partial "analytics.html" . }}
 </body>
 </html>

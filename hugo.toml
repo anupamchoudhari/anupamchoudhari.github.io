@@ -9,6 +9,8 @@ disableKinds = []
   description = "Making AI products dependable: prototypes, the frameworks behind them, books worth arguing with, and coffee."
   author = "Anupam Choudhari"
   ogImage = "images/og-default.png"   # default share image; a page can set `image:` in front matter
+  # Page views: paste the token from Cloudflare > Web Analytics > Add a site. Empty = no tracking.
+  cloudflareAnalyticsToken = ""
   ogImageAlt = "Making AI stick. Models are probabilistic. Products can't be."
 
 # Every post lives at a flat address: anupamchoudhari.com/<slug>
