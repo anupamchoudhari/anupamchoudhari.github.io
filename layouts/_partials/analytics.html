@@ -1,0 +1,5 @@
+{{/* Cloudflare Web Analytics: cookieless page views. Loads only on the live build
+     (hugo, not hugo server) and only once params.cloudflareAnalyticsToken is set. */}}
+{{ with site.Params.cloudflareAnalyticsToken }}{{ if hugo.IsProduction }}
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{ dict "token" . | jsonify }}'></script>
+{{ end }}{{ end }}
