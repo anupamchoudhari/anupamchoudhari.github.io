@@ -17,7 +17,7 @@ Each command starts the post from that section's default shape (`archetypes/`). 
 
 - **Link:** every post lives at `anupamchoudhari.com/<slug>`. The slug is the filename unless `slug:` says otherwise.
 - **Section:** the folder a post sits in. It drives the breadcrumb. Moving a post to another folder never changes its link.
-- **Drafts:** `draft: true` keeps a post off the live site. Delete the line to publish.
+- **Drafts:** work in progress lives in the private repo [site-drafts](https://github.com/anupamchoudhari/site-drafts), which has a `promote.sh` that copies a finished post here. Anything in this repo is public on GitHub, even with `draft: true` (that only keeps it off the built site).
 - **Themes:** `themes: [ai-that-ships]` groups posts across sections at `/themes/`.
 - **Workbench:** short and visual. Front matter `stage: concept | prototype | in-use` and `demo:` (shows a "Try the prototype" link); `##` headings in the body.
 - **Lists:** `blurb:` is the one line under a post's title in lists; `description:` is the italic line under the title on the post itself.
