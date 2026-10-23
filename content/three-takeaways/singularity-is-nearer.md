@@ -6,7 +6,7 @@ draft: false
 themes: [ai-that-ships]
 kind: book
 byline: "Ray Kurzweil"
-description: "A book that predicted human-level AI by 2029, back when that sounded silly. Its sequel bets on nanobots, endless lifespans and a basic income for everyone. One of those bets looks very different from Mumbai than from California."
+description: "A book that predicted human-level AI by 2029, back when that sounded silly. Its sequel bets on nanobots, endless lifespans and a basic income for everyone. Do these bets work in the Indian market?"
 blurb: "Nanobots, longer lives, and a basic income that doesn't travel well."
 image: images/singularity-is-nearer-cover.png
 imageAlt: "Three Takeaways: The Singularity Is Nearer by Ray Kurzweil, with the book's cover of light beams converging on a point."
@@ -66,6 +66,11 @@ If even half of this arrives, healthcare and insurance get turned upside down. H
 Farming today is limited by two things it can't control: how much land you have, and the weather. Some crops die when the rain fails. Others rot when it comes too hard or too late. A whole season's work can be undone in a week.
 
 Part of that limit has already been broken. Hydroponics grows plants without soil, with roots sitting in water that carries exactly the nutrients they need, and hydroponic lettuce, herbs and microgreens are already on supermarket shelves in Indian cities. The book's prediction goes further: most crops grown indoors, in layers stacked several floors high, under LED light. AI manages the water, nutrients and climate for every tray. Think of them as data centres for farms. They use a fraction of the land and water of an open field, don't depend on the monsoon, and can sit next to the city that eats the food. The book expects this to push food prices sharply down.
+
+<figure class="art">
+  <img src="/images/aerofarms-vertical-farm.jpg" alt="Rows of seedling trays stacked many levels high under LED strip lights inside an AeroFarms indoor vertical farm, with a scissor lift parked between the racks." width="1024" height="768" loading="lazy">
+  <figcaption>Inside an AeroFarms vertical farm.</figcaption>
+</figure>
 
 Today the economics only work for leafy greens and a few high-value crops. Wheat and rice still need open fields. But in India this isn't a gadget story. In 2022, [11,290 farmers and farm labourers died by suicide](https://www.downtoearth.org.in/agriculture/one-farmer-farm-labourer-dies-by-suicide-every-hour-in-india-ncrb-data-93184), about one every hour, and crop failure and debt are recurring reasons. Land is the other problem. [86% of farm holdings](https://indiaenvironmentportal.org.in/reports-and-documents/agriculture-census-2015-16) are under two hectares, the average is about one hectare, and ownership disputes over that land can run for generations. Farming that doesn't depend on owning large plots, or on the rain, changes who can farm and how much risk they carry. It won't fix debt or crop prices by itself, but it removes the two things farmers can least control.
 
