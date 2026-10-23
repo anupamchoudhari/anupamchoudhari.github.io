@@ -44,7 +44,7 @@
   </main>
 </div>
 {{ end }}
-<div class="footer"><p><span>Made in Bangalore, by way of Mumbai, Rochester and Los Alamos.</span><span class="elsewhere"><a href="https://www.linkedin.com/in/anupam-choudhari" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://medium.com/@anupam.choudhari" rel="me noopener" target="_blank">Medium</a> · <a href="https://x.com/anupm_" rel="me noopener" target="_blank">X</a> · <a href="https://github.com/anupamchoudhari" rel="me noopener" target="_blank">GitHub</a> · <a href="{{ "index.xml" | relURL }}">RSS</a></span></p></div>
+<div class="footer"><p><span>Made in Bangalore, by way of Mumbai, Rochester and Los Alamos.</span><span class="elsewhere"><a href="https://www.linkedin.com/in/anupam-choudhari" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://medium.com/@anupam.choudhari" rel="me noopener" target="_blank">Medium</a> · <a href="https://x.com/anupm_" rel="me noopener" target="_blank">X</a> · <a href="https://github.com/anupamchoudhari" rel="me noopener" target="_blank">GitHub</a></span></p></div>
 {{ partial "roadtrip.html" . }}
 {{ $js := resources.Get "js/easter-eggs.js" | minify | fingerprint }}
 <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
