@@ -14,6 +14,7 @@
   {{ end }}
   {{ with .Params.demo }}<p class="try"><a href="{{ . }}">Try the prototype →</a></p>{{ end }}
   <div class="body">{{ .Content }}</div>
+  {{ if .Section }}{{ partial "toc.html" . }}{{ end }}
   {{ if .Section }}
   <div class="endnote">
     {{ with .CurrentSection }}<a href="{{ .RelPermalink }}">← More from {{ .Title }}</a>{{ end }}

@@ -1,0 +1,19 @@
+{{/* Floating "On this page" nav for long posts. Shows when the post has at least
+     site.Params.toc.minWords words and three headings; front matter `toc: true` or
+     `toc: false` overrides. Wide screens: a rail beside the column. Narrow: a pill. */}}
+{{ $cfg := site.Params.toc | default dict }}
+{{ $min := $cfg.minWords | default 1500 }}
+{{ $toc := .TableOfContents }}
+{{ $show := and (ge .WordCount $min) (ge (len (findRE `<li>` $toc)) 3) }}
+{{ with .Params.toc }}{{ $show = true }}{{ end }}
+{{ if eq .Params.toc false }}{{ $show = false }}{{ end }}
+{{ if and $show (findRE `<li>` $toc) }}
+<nav class="toc" aria-label="On this page">
+  <details>
+    <summary>On this page</summary>
+    {{ $toc | replaceRE `<nav id="TableOfContents">\s*` "" | replaceRE `\s*</nav>\s*$` "" | safeHTML }}
+  </details>
+</nav>
+{{ $js := resources.Get "js/toc.js" | minify | fingerprint }}
+<script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
