@@ -12,6 +12,9 @@ disableKinds = []
   # Page views: paste the token from Cloudflare > Web Analytics > Add a site. Empty = no tracking.
   cloudflareAnalyticsToken = "5323d8b2dd3748e38e77c2f94706a5ef"
   ogImageAlt = "Making AI stick. Models are probabilistic. Products can't be."
+  # "On this page" nav on long posts. A post can force it with `toc: true` or hide it with `toc: false`.
+  [params.toc]
+    minWords = 1500
 
 # Every post lives at a flat address: anupamchoudhari.com/<slug>
 # Moving a post to another section folder never changes its link.
@@ -58,6 +61,10 @@ disableKinds = []
 
 [markup.goldmark.renderer]
   unsafe = true   # allow raw HTML in posts (embeds, demos)
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 3
 
 [markup.highlight]
   noClasses = false
