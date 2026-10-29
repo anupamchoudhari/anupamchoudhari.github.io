@@ -8,7 +8,7 @@ draft: false
 description: "Most AI calls give themselves away in the first three seconds. What sits behind one that doesn't have to."
 blurb: "The moving parts of a voice AI agent, worked through on one that turns any website into a sales rep."
 demo: https://site2voice-sales-rep.vercel.app/
-image: /images/site2voice-share.png
+image: /images/site2voice-cover.png
 imageAlt: "Site2Voice, with a voice waveform and the line: Any website, turned into a sales rep you can call."
 ---
 
