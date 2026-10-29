@@ -1,5 +1,5 @@
 {{/* Share image: front matter `image` (a file in the page bundle, or a path under static/) wins;
-     otherwise the site default, static/images/og-default.png (1200x630). */}}
+     otherwise the site default, static/images/og-default.png. Every share image is 1200x630. */}}
 {{ $desc := .Description | default site.Params.description }}
 {{ $img := "" }}
 {{ $alt := .Params.imageAlt }}
@@ -15,8 +15,8 @@
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:description" content="{{ $desc }}">
 <meta property="og:image" content="{{ $img }}">
-{{ if not .Params.image }}<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">{{ end }}
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 {{ with $alt }}<meta property="og:image:alt" content="{{ . }}">{{ end }}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ .Title }}">

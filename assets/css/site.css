@@ -48,6 +48,7 @@ article.post{display:flex;flex-direction:column;gap:0}
 .post .dek{font-family:var(--serif);font-style:italic;font-size:1.35rem;line-height:1.45;color:var(--ink-soft);margin-top:0.9rem}
 .post .meta{font-size:0.86rem;color:var(--ink-soft);margin-top:1.2rem;display:flex;flex-wrap:wrap;gap:0.2rem 0.9rem}
 .post .try{margin-top:1.4rem;font-size:0.95rem}
+.post .try a+a{margin-left:1.6rem}
 .body{font-family:var(--serif);font-size:1.2rem;line-height:1.7;margin-top:2.6rem;display:flex;flex-direction:column;gap:1.15rem}
 .body h2{font-size:1.5rem;margin-top:1.6rem}
 .body ul,.body ol{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:0.6rem}

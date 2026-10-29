@@ -12,7 +12,10 @@
   {{ else if .Params.lastmod }}
   <p class="meta"><span>Last updated {{ .Lastmod.Format "2 January 2006" }}</span></p>
   {{ end }}
-  {{ with .Params.demo }}<p class="try"><a href="{{ . }}">Try the prototype →</a></p>{{ end }}
+  {{ if or .Params.demo .Params.repo }}<p class="try">
+    {{- with .Params.demo }}<a href="{{ . }}">Try the prototype →</a>{{ end }}
+    {{- with .Params.repo }}<a href="{{ . }}">Code on GitHub →</a>{{ end -}}
+  </p>{{ end }}
   <div class="body">{{ .Content }}</div>
   {{ if .Section }}{{ partial "toc.html" . }}{{ end }}
   {{ if .Section }}
