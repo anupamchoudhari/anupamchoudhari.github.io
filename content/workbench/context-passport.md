@@ -46,7 +46,7 @@ Every AI tool meets you as a stranger. The planner knows how you think about roa
       <marker id="cp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--ink-soft)"/></marker>
       <marker id="cp-arrow-key" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--link)"/></marker>
     </defs>
-    <text class="h" x="16" y="24"><tspan class="num">1</tspan>  COLLECT</text>
+    <text class="h" x="16" y="24"><tspan class="num">1</tspan><tspan dx="9">COLLECT</tspan></text>
     <text class="m" x="102.0" y="24" text-anchor="start">where your context already lives</text>
     <rect class="box" x="10" y="40" width="128" height="50" rx="6"/>
     <text class="t" x="74.0" y="61" text-anchor="middle">AI chats</text>
@@ -74,7 +74,7 @@ Every AI tool meets you as a stranger. The planner knows how you think about roa
     <line class="wire" x1="606.0" y1="90" x2="606.0" y2="124"/>
     <text class="m mode" x="611.0" y="108" text-anchor="start">upload</text>
     <line class="wire" x1="74.0" y1="124" x2="606.0" y2="124"/>
-    <text class="h" x="16" y="152"><tspan class="num">2</tspan>  FILTER</text>
+    <text class="h" x="16" y="152"><tspan class="num">2</tspan><tspan dx="9">FILTER</tspan></text>
     <path class="wire" d="M108 124 V164" marker-end="url(#cp-arrow)"/>
     <rect class="box" x="20" y="166" width="176" height="58" rx="6"/>
     <text class="t" x="108.0" y="190" text-anchor="middle">Worth keeping?</text>
@@ -96,7 +96,7 @@ Every AI tool meets you as a stranger. The planner knows how you think about roa
     <path class="wire" d="M410 224 V316" marker-end="url(#cp-arrow)"/>
     <path class="wire" d="M572.0 224 V316" marker-end="url(#cp-arrow)"/>
     <text class="m" x="578.0" y="246" text-anchor="start">approved</text>
-    <text class="h" x="16" y="296"><tspan class="num">3</tspan>  KEEP</text>
+    <text class="h" x="16" y="296"><tspan class="num">3</tspan><tspan dx="9">KEEP</tspan></text>
     <path class="box" d="M20 328 a320.0 10 0 0 1 640 0 V420 a320.0 10 0 0 1 -640 0 Z"/>
     <path class="wire" d="M20 328 a320.0 10 0 0 0 640 0"/>
     <text class="t2b" x="36" y="356" text-anchor="start">The passport</text>
@@ -112,7 +112,7 @@ Every AI tool meets you as a stranger. The planner knows how you think about roa
     <rect class="page sealed" x="533" y="368" width="118" height="30" rx="6"/>
     <text class="t2" x="592.0" y="388" text-anchor="middle">Private</text>
     <text class="m" x="36" y="408" text-anchor="start">each fact keeps its source and the date it was last confirmed</text>
-    <text class="h" x="16" y="480"><tspan class="num">4</tspan>  HAND OVER</text>
+    <text class="h" x="16" y="480"><tspan class="num">4</tspan><tspan dx="9">HAND OVER</tspan></text>
     <line class="block" x1="592.0" y1="432" x2="592.0" y2="464"/><line class="bar" x1="582.0" y1="464" x2="602.0" y2="464"/>
     <text class="m" x="578.0" y="460" text-anchor="end">Private never leaves</text>
     <rect class="box" x="20" y="496" width="180" height="50" rx="6"/>

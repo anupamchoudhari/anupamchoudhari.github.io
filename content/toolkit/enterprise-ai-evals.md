@@ -261,35 +261,35 @@ The template is designed to be filled in over about five days, in one pass throu
 <defs><marker id="ev-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--ink-soft)"/></marker><marker id="ev-ar-k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--link)"/></marker></defs>
 <text class="m" x="12" y="20">THE EVAL PRD, WRITTEN IN ONE PASS OF THE LOOP</text>
 <rect class="box" x="12" y="40" width="148" height="150" rx="6"/>
-<text class="h" x="24" y="64"><tspan class="num">1</tspan>  DEFINE</text>
+<text class="h" x="24" y="64"><tspan class="num">1</tspan><tspan dx="9">DEFINE</tspan></text>
 <text class="t" x="24" y="90">What job, and what</text><text class="t" x="24" y="107">must never happen?</text>
 <line class="hair" x1="24" y1="124" x2="148" y2="124"/>
 <text class="m" x="24" y="142">sections 1 to 4</text><text class="m" x="24" y="159">day 1</text><text class="m own" x="24" y="176">PM</text>
 <path class="wire" d="M162 115.0 H179" marker-end="url(#ev-ar)"/>
 <rect class="box" x="182" y="40" width="148" height="150" rx="6"/>
-<text class="h" x="194" y="64"><tspan class="num">2</tspan>  DISCOVER</text>
+<text class="h" x="194" y="64"><tspan class="num">2</tspan><tspan dx="9">DISCOVER</tspan></text>
 <text class="t" x="194" y="90">How does it</text><text class="t" x="194" y="107">actually fail?</text>
 <line class="hair" x1="194" y1="124" x2="318" y2="124"/>
 <text class="m" x="194" y="142">sections 5 and 6</text><text class="m" x="194" y="159">days 2 and 3</text><text class="m own" x="194" y="176">PM + domain expert</text>
 <path class="wire" d="M332 115.0 H349" marker-end="url(#ev-ar)"/>
 <rect class="key" x="352" y="40" width="148" height="150" rx="6"/>
-<text class="h" x="364" y="64"><tspan class="num">3</tspan>  MEASURE</text>
+<text class="h" x="364" y="64"><tspan class="num">3</tspan><tspan dx="9">MEASURE</tspan></text>
 <text class="t" x="364" y="90">Can we catch each</text><text class="t" x="364" y="107">failure, every build?</text>
 <line class="hair" x1="364" y1="124" x2="488" y2="124"/>
 <text class="m" x="364" y="142">sections 7 and 8</text><text class="m" x="364" y="159">day 4</text><text class="m own" x="364" y="176">engineering + PM</text>
 <path class="wire" d="M502 115.0 H519" marker-end="url(#ev-ar)"/>
 <rect class="box" x="522" y="40" width="148" height="150" rx="6"/>
-<text class="h" x="534" y="64"><tspan class="num">4</tspan>  MONITOR</text>
+<text class="h" x="534" y="64"><tspan class="num">4</tspan><tspan dx="9">MONITOR</tspan></text>
 <text class="t" x="534" y="90">Still working, and</text><text class="t" x="534" y="107">worth the cost?</text>
 <line class="hair" x1="534" y1="124" x2="658" y2="124"/>
 <text class="m" x="534" y="142">section 9</text><text class="m" x="534" y="159">day 5, then weekly</text><text class="m own" x="534" y="176">PM + engineering</text>
 <path class="wire-key" d="M426.0 192 V220" marker-end="url(#ev-ar-k)"/>
 <rect class="key" x="356.0" y="223" width="140" height="40" rx="20"/>
 <text class="t2b" x="426.0" y="241" text-anchor="middle">CI on every build</text>
-<text class="m" x="426.0" y="255" text-anchor="middle"><tspan class="ok">SHIP</tspan>  or  <tspan class="bad">HOLD</tspan></text>
+<text class="m" x="426.0" y="255" text-anchor="middle"><tspan class="ok">SHIP</tspan><tspan dx="7">or</tspan><tspan class="bad" dx="7">HOLD</tspan></text>
 <text class="m" x="426.0" y="280" text-anchor="middle">a broken safety rule always means HOLD</text>
 <path class="wire-key dash" d="M596.0 192 V306 H256.0 V194" marker-end="url(#ev-ar-k)"/>
-<rect class="lab" x="298.0" y="297" width="256" height="18"/>
+<rect class="lab" x="306.0" y="297" width="240" height="18"/>
 <text class="m lk" x="426.0" y="310" text-anchor="middle">every new failure becomes a test case</text>
 </svg>
 </div>

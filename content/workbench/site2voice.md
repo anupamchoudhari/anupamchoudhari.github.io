@@ -51,7 +51,7 @@ Site2Voice was a way to take apart the moving parts of a voice application: spee
       <marker id="sv-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--ink-soft)"/></marker>
       <marker id="sv-arrow-key" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--link)"/></marker>
     </defs>
-    <text class="h" x="4" y="22"><tspan class="num">1</tspan>  BUILD</text>
+    <text class="h" x="4" y="22"><tspan class="num">1</tspan><tspan dx="9">BUILD</tspan></text>
     <text class="m" x="76" y="22">about a minute per site</text>
     <rect class="box" x="2" y="36" width="120" height="54" rx="6"/>
     <text class="t" x="62" y="59" text-anchor="middle">Paste a URL</text>
@@ -75,7 +75,7 @@ Site2Voice was a way to take apart the moving parts of a voice application: spee
     <path class="dash" d="M476 90 V112 H526 V156" marker-end="url(#sv-arrow)"/>
     <path class="dash" d="M614 90 V112 H564 V156" />
     <text class="m" x="572" y="140">prompt + index</text>
-    <text class="h" x="4" y="150"><tspan class="num">2</tspan>  CALL</text>
+    <text class="h" x="4" y="150"><tspan class="num">2</tspan><tspan dx="9">CALL</tspan></text>
     <rect class="box" x="2" y="180" width="130" height="58" rx="6"/>
     <text class="t" x="67" y="204" text-anchor="middle">Visitor</text>
     <text class="m" x="67" y="222" text-anchor="middle">browser or widget</text>
