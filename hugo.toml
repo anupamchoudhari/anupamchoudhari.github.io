@@ -13,6 +13,10 @@ disableKinds = []
   cloudflareAnalyticsToken = "5323d8b2dd3748e38e77c2f94706a5ef"
   ogImageAlt = "Making AI stick. Models are probabilistic. Products can't be."
   # "On this page" nav on long posts. A post can force it with `toc: true` or hide it with `toc: false`.
+  # Claps, owner-only view counts and email subscribe on posts. Set `api` to the Worker's
+  # address (see worker/README.md); empty = only the share links show.
+  [params.engage]
+    api = ""
   [params.toc]
     minWords = 1500
 
@@ -68,3 +72,13 @@ disableKinds = []
 
 [markup.highlight]
   noClasses = false
+
+# posts.json: a small list of published posts that the email Worker (worker/) checks
+# once an hour to announce new ones. Not linked anywhere on the site.
+[outputFormats.postsjson]
+  mediaType = "application/json"
+  baseName = "posts"
+  isPlainText = true
+  notAlternative = true
+[outputs]
+  home = ["html", "rss", "postsjson"]

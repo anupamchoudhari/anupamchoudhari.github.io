@@ -1,0 +1,30 @@
+# Engagement Worker for anupamchoudhari.com: claps, owner-only view counts,
+# and email subscriptions to new posts. See README.md in this folder.
+name = "site-engage"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+# Serves the API at https://api.anupamchoudhari.com (DNS record is created on deploy).
+routes = [{ pattern = "api.anupamchoudhari.com", custom_domain = true }]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "site-engage"
+database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"
+
+# Checks /posts.json for new posts once an hour and emails confirmed subscribers.
+[triggers]
+crons = ["17 * * * *"]
+
+[vars]
+SITE = "https://www.anupamchoudhari.com"
+API_ORIGIN = "https://api.anupamchoudhari.com"
+ALLOWED_ORIGINS = "https://www.anupamchoudhari.com,https://anupamchoudhari.com,http://localhost:1313"
+FEED_URL = "https://www.anupamchoudhari.com/posts.json"
+MAIL_FROM = "Anupam Choudhari <posts@updates.anupamchoudhari.com>"
+MAX_CLAPS = "50"
+
+# Secrets (set with `npx wrangler secret put NAME`, never committed):
+#   SALT            random string used to hash reader ids and IPs
+#   OWNER_TOKEN     random string; lets you see view counts on posts
+#   RESEND_API_KEY  from resend.com, for subscription emails
