@@ -1,0 +1,44 @@
+{{/* End-of-post bar: claps, share, subscribe. Share works on its own (plain links);
+     claps, owner view counts and subscribe need site.Params.engage.api (the Worker in /worker)
+     and stay hidden until it is set. Front matter `engage: false` hides the whole bar. */}}
+{{ if ne .Params.engage false }}
+{{ $api := site.Params.engage.api | default "" }}
+{{ $url := .Permalink }}
+{{ $title := .Title }}
+<section class="engage" aria-label="Respond to this post" data-slug="{{ trim .RelPermalink "/" }}"{{ with $api }} data-api="{{ . }}"{{ end }}>
+  <div class="engage-row">
+    {{ if $api }}
+    <div class="clap" hidden>
+      <button type="button" class="clap-btn" aria-label="Applaud this post. Hold to applaud more." title="Applaud. Hold to applaud more.">
+        <span class="clap-icon" aria-hidden="true">👏</span>
+        <span class="clap-n" aria-live="polite">0</span>
+        <span class="clap-burst" aria-hidden="true"></span>
+      </button>
+      <span class="clap-note muted"></span>
+    </div>
+    {{ end }}
+    <div class="share">
+      <span class="share-label muted">Share</span>
+      <button type="button" class="share-native linkish" hidden>Share…</button>
+      <button type="button" class="share-copy linkish" data-url="{{ $url }}">Copy link</button>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $url | urlquery }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://x.com/intent/post?url={{ $url | urlquery }}&text={{ $title | urlquery }}" target="_blank" rel="noopener">X</a>
+      <a href="https://wa.me/?text={{ printf "%s %s" $title $url | urlquery }}" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:?subject={{ $title | urlquery }}&body={{ $url | urlquery }}">Email</a>
+    </div>
+  </div>
+  {{ if $api }}
+  <form class="subscribe" hidden>
+    <label for="sub-email">New posts by email. One email per post, nothing else.</label>
+    <div class="subscribe-row">
+      <input id="sub-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit">Subscribe</button>
+    </div>
+    <p class="subscribe-msg muted" aria-live="polite"></p>
+  </form>
+  {{ end }}
+</section>
+{{ $js := resources.Get "js/engage.js" | minify | fingerprint }}
+<script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}

@@ -162,3 +162,37 @@ article.post{display:flex;flex-direction:column;gap:0}
 /* with JS, it fades in once the reader reaches the first section */
 .toc.js:not(.on){opacity:0;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.toc{transition:none}}
+
+/* ---------- end-of-post bar: claps, share, subscribe ---------- */
+.engage{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:1.6rem;font-size:0.92rem}
+.engage ~ .endnote{margin-top:1.6rem}
+.engage-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem 1.5rem}
+.clap{display:flex;align-items:center;gap:0.8rem}
+.clap-btn{position:relative;display:inline-flex;align-items:center;gap:0.5rem;font:inherit;color:var(--ink);background:none;border:1px solid var(--rule);border-radius:999px;padding:0.4rem 0.95rem 0.4rem 0.75rem;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation;transition:border-color .15s,transform .08s}
+.clap-btn:hover{border-color:var(--link)}
+.clap-btn:active{transform:scale(0.96)}
+.clap-btn:disabled{cursor:default;transform:none}
+.clap-icon{font-size:1.15rem;line-height:1;filter:grayscale(1);opacity:0.75;transition:filter .2s,opacity .2s}
+.clap-btn.clapped .clap-icon{filter:none;opacity:1}
+.clap-btn.clapped{border-color:var(--link)}
+.clap-n{font-family:var(--mono);font-size:0.85rem;font-variant-numeric:tabular-nums;min-width:1ch}
+.clap-burst{position:absolute;left:50%;top:-0.2rem;transform:translate(-50%,0);font-family:var(--mono);font-size:0.75rem;color:var(--paper);background:var(--link);border-radius:999px;padding:0.05rem 0.45rem;opacity:0;pointer-events:none}
+.clap-burst.go{animation:burst .7s ease-out}
+@keyframes burst{0%{opacity:0;transform:translate(-50%,0.4rem)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-1.6rem)}}
+.clap-note,.views{font-size:0.82rem}
+.views{font-family:var(--mono)}
+.share{display:flex;align-items:baseline;flex-wrap:wrap;gap:0.3rem 0.95rem}
+.share a,.share .linkish{color:var(--ink-soft);font-size:0.88rem;text-decoration:none}
+.share a:hover,.share .linkish:hover{color:var(--link);text-decoration:underline}
+.share-label{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase}
+.subscribe{display:flex;flex-direction:column;gap:0.6rem}
+.subscribe label{font-family:var(--serif);font-size:1.08rem}
+.subscribe-row{display:flex;gap:0.5rem;max-width:26rem}
+.subscribe input[type=email]{flex:1;min-width:0;font:inherit;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:6px;padding:0.5rem 0.7rem}
+.subscribe input[type=email]:focus{outline:2px solid var(--link);outline-offset:1px;border-color:transparent}
+.subscribe button{font:inherit;color:var(--paper);background:var(--link);border:0;border-radius:6px;padding:0.5rem 1rem;cursor:pointer}
+.subscribe button:disabled{opacity:0.6}
+.subscribe .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.subscribe-msg:empty{display:none}
+.engage [hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){.clap-burst.go{animation:none}}

@@ -23,6 +23,7 @@ Each command starts the post from that section's default shape (`archetypes/`). 
 - **Lists:** `blurb:` is the one line under a post's title in lists; `description:` is the italic line under the title on the post itself.
 - **Homepage:** "Making AI ___" streams in from `assets/js/stream-headline.js` (edit `WORDS` there); the thesis and scope lines live in `content/_index.md`. "Lately" lists the newest posts.
 - **Currently Brewing:** the roaster log is `data/roasters.yaml`; a roaster appears once its `coffee` is filled in. "This month" and the shelf photo are in `content/currently-brewing/_index.md`.
+- **Claps, share, subscribe:** the bar at the end of each post (`layouts/_partials/engage.html`). Share links always show; claps, your private view counts and email subscribe run on a small Cloudflare Worker in `worker/` (setup in its README) and switch on once `[params.engage] api` is set in `hugo.toml`. `engage: false` hides the bar on a post.
 - **Road Trip Mode** (the Konami code) reads its stops from `data/roadtrip.yaml`.
 
 ## Preview locally

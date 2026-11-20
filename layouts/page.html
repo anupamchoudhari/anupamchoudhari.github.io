@@ -17,6 +17,7 @@
     {{- with .Params.repo }}<a href="{{ . }}">Code on GitHub →</a>{{ end -}}
   </p>{{ end }}
   <div class="body">{{ .Content }}</div>
+  {{ if .Section }}{{ partial "engage.html" . }}{{ end }}
   {{ if .Section }}{{ partial "toc.html" . }}{{ end }}
   {{ if .Section }}
   <div class="endnote">
