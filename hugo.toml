@@ -16,7 +16,7 @@ disableKinds = []
   # Claps, owner-only view counts and email subscribe on posts. Set `api` to the Worker's
   # address (see worker/README.md); empty = only the share links show.
   [params.engage]
-    api = ""
+    api = "https://api.anupamchoudhari.com"
   [params.toc]
     minWords = 1500
 

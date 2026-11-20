@@ -10,7 +10,7 @@ routes = [{ pattern = "api.anupamchoudhari.com", custom_domain = true }]
 [[d1_databases]]
 binding = "DB"
 database_name = "site-engage"
-database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"
+database_id = "2ad46943-dd5d-4b6d-92a8-a430a5d294d3"
 
 # Checks /posts.json for new posts once an hour and emails confirmed subscribers.
 [triggers]
